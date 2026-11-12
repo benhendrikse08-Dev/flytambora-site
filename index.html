@@ -197,10 +197,14 @@ background-image:linear-gradient(#211D33 1px,transparent 1px),linear-gradient(90
 .sg-go{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:#1A3A72;color:#fff;text-decoration:none;font-size:14px;font-weight:600;transition:transform .25s,background .25s}
 .sg-go:hover{background:#0F2A57;transform:translateY(-1px)}
 @media (max-width:560px){.sg-logo{height:46px;margin-bottom:18px}.sg-lead{font-size:15px}.sg-steps{grid-template-columns:1fr;gap:10px;margin-top:20px}.sg-steps div{border-top-width:1px;padding-top:9px}.sg-steps .n{display:none}.sg-steps h4{margin:0;font-size:16px}.sg-steps p{margin-top:2px;font-size:13.5px}.sg-foot{margin-top:20px}.sg-foot{flex-direction:column;align-items:flex-start}.sg-go{width:100%;justify-content:center}}
-/* hero motion: slow push-in with a gentle hover drift */
-.tz>picture img{transform-origin:62% 48%;animation:heroDrift 18s ease-in-out infinite alternate;will-change:transform}
-@keyframes heroDrift{0%{transform:scale(1.02) translate3d(0,0,0)}25%{transform:scale(1.04) translate3d(-.4%,-.5%,0)}50%{transform:scale(1.06) translate3d(-.8%,.2%,0)}75%{transform:scale(1.075) translate3d(-1.1%,-.4%,0)}100%{transform:scale(1.09) translate3d(-1.4%,0,0)}}
-@media (prefers-reduced-motion:reduce){.tz>picture img{animation:none}}
+/* hero: still sky, drones flying their own loops */
+.hs{position:absolute;left:0;top:0;width:1733px;height:908px;transform-origin:0 0;z-index:1;opacity:0;transition:opacity .6s;pointer-events:none}
+.tz.hero-live .hs{opacity:1}
+.hs img{position:absolute;display:block;user-select:none}
+.hs .sky{left:0;top:0;width:1733px;height:908px}
+.hs .d0{left:1095px;top:118px;width:530px;height:244px;will-change:transform}
+.hs .d1{left:735px;top:272px;width:210px;height:100px;will-change:transform}
+.tz-title,.tz-cta,.tz-head{z-index:2}
 /* tesla-style hero */
 html{scroll-behavior:smooth}
 .tz{position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden;padding:0}
@@ -408,6 +412,11 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <section class="tz" id="top">
  <picture><source srcset="img/hero.webp" type="image/webp"><img src="img/hero.jpg" alt="Two Tambora aircraft flying low over a mountain ridge at dusk" width="1733" height="908" fetchpriority="high"></picture>
+ <div class="hs" aria-hidden="true">
+  <picture><source srcset="img/hero-sky.webp" type="image/webp"><img class="sky" src="img/hero-sky.jpg" alt="" width="1733" height="908"></picture>
+  <picture><source srcset="img/hero-d1.webp" type="image/webp"><img class="d1" src="img/hero-d1.png" alt="" width="210" height="100"></picture>
+  <picture><source srcset="img/hero-d0.webp" type="image/webp"><img class="d0" src="img/hero-d0.png" alt="" width="530" height="244"></picture>
+ </div>
  <div class="w tz-head">
   <header>
    <a class="logo" href="/" aria-label="Tambora">
@@ -616,6 +625,29 @@ d.addEventListener('close',function(){document.body.style.overflow=''});
 d.querySelector('.lm-x').addEventListener('click',function(){d.close()});
 d.addEventListener('click',function(e){if(e.target===d)d.close()});});
 document.querySelectorAll('[data-dlg]').forEach(function(b){b.addEventListener('click',function(){var d=document.getElementById(b.getAttribute('data-dlg'));if(d&&d.showModal){d.showModal();d.scrollTop=0;document.body.style.overflow='hidden'}})});
+})();
+</script>
+
+<script>
+(function(){
+ var tz=document.querySelector('.tz'),hs=tz&&tz.querySelector('.hs'),base=tz&&tz.querySelector(':scope>picture img');if(!hs||!base)return;
+ var imgs=[].slice.call(hs.querySelectorAll('img')),d0=hs.querySelector('.d0'),d1=hs.querySelector('.d1');
+ var IW=1733,IH=908;
+ function fit(){var W=tz.clientWidth,H=tz.clientHeight,k=Math.max(W/IW,H/IH),op=getComputedStyle(base).objectPosition.split(' ');
+  var px=parseFloat(op[0])/100,py=parseFloat(op[1]||'50%')/100;if(isNaN(px))px=.5;if(isNaN(py))py=.5;
+  hs.style.transform='translate('+((W-IW*k)*px)+'px,'+((H-IH*k)*py)+'px) scale('+k+')'}
+ fit();addEventListener('resize',fit);
+ var left=imgs.length;function done(){if(--left<=0){fit();tz.classList.add('hero-live');base.style.visibility='hidden';start()}}
+ imgs.forEach(function(i){if(i.complete&&i.naturalWidth)done();else{i.addEventListener('load',done);i.addEventListener('error',function(){})}});
+ var still=matchMedia('(prefers-reduced-motion: reduce)').matches,vis=true,t0=performance.now();
+ if('IntersectionObserver' in window)new IntersectionObserver(function(e){vis=e[0].isIntersecting}).observe(tz);
+ function pose(el,t,P,ax,ay,ph,dir,sc){
+  var a=2*Math.PI*(t/P)+ph,x=Math.sin(a)*ax,y=Math.sin(2*a)*ay*.5+Math.sin(a*.5+ph)*ay*.35,
+      vx=Math.cos(a)*ax,depth=Math.cos(a)*dir;
+  var s=1+depth*sc,bob=Math.sin(t/430+ph)*2.2,tilt=-vx/ax*4.5*dir+Math.sin(t/900+ph)*.6;
+  el.style.transform='translate('+x.toFixed(2)+'px,'+(y+bob).toFixed(2)+'px) rotate('+tilt.toFixed(2)+'deg) scale('+s.toFixed(4)+')'}
+ function frame(now){if(vis){var t=now-t0;pose(d0,t,14000,70,46,0,1,.06);pose(d1,t,11000,95,40,1.9,-1,.1)}requestAnimationFrame(frame)}
+ function start(){if(still)return;requestAnimationFrame(frame)}
 })();
 </script>
 </body>

@@ -134,7 +134,8 @@ html{scroll-behavior:smooth}
 .closer-in>*{max-width:560px}
 .closer-line{color:#fff;font-size:clamp(34px,4.4vw,60px);font-weight:300;line-height:1.02;letter-spacing:-.035em;max-width:900px;text-wrap:balance}
 .closer-line b{font-weight:500}
-.closer-sub{color:#D7DCE2;font-size:17px;margin-top:20px}
+.closer-sub{color:#D7DCE2;font-size:17px;line-height:1.6;margin-top:20px}
+.closer-sub b{color:#fff;font-weight:600}
 .preorder{display:inline-flex;align-items:center;gap:12px;margin-top:26px;padding:12px 18px;border-radius:10px;background:rgba(11,17,24,.62);border:1px solid rgba(255,255,255,.18);font-size:16px;color:#E6EAEE;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 .preorder b{color:#fff;font-weight:600}
 .preorder .live{flex:none}
@@ -165,6 +166,13 @@ html{scroll-behavior:smooth}
 .invite.done .inv-actions .btn.big{display:none}
 #invite{scroll-margin-top:30vh}
 @media (max-width:560px){.inv-actions{flex-direction:column;align-items:stretch}.inv-actions .btn2{width:100%}}
+.btn.hero-cta{gap:10px;font-size:16px;font-weight:600;letter-spacing:.01em;box-shadow:0 10px 30px rgba(11,17,24,.35)}
+.btn.hero-cta::after{background:linear-gradient(90deg,var(--s1),var(--s2),var(--s3),var(--s4),var(--s1));background-size:200% 100%;animation:flow 3s linear infinite}
+@keyframes flow{from{background-position:0 0}to{background-position:-200% 0}}
+.btn.hero-cta .arr{display:inline-block;transition:transform .3s;animation:nudge 2.4s ease-in-out infinite}
+@keyframes nudge{0%,70%,100%{transform:translateX(0)}80%{transform:translateX(5px)}90%{transform:translateX(0)}}
+.btn.hero-cta:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 16px 40px rgba(11,17,24,.45)}
+.btn.hero-cta:hover .arr{transform:translateX(5px);animation:none}
 /* --- life --- */
 .logo .stripe i{transform-origin:left;animation:grow .7s cubic-bezier(.2,.7,.2,1) both}
 .logo .stripe i:nth-child(2){animation-delay:.12s}.logo .stripe i:nth-child(3){animation-delay:.24s}.logo .stripe i:nth-child(4){animation-delay:.36s}
@@ -254,7 +262,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="tz-sub">The full site launches at the end of 2026.</div>
  </div>
  <div class="tz-cta">
-  <a class="btn big" href="#invite">Claim your free demo-day invite</a>
+  <a class="btn big hero-cta" href="#invite"><i class="live" aria-hidden="true"></i><span>Meet the drone</span><span class="arr" aria-hidden="true">→</span></a>
   <a class="btn2" href="#aircraft">Learn more</a>
  </div>
  <span class="tz-cap">Concept render</span>
@@ -363,15 +371,14 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  <picture><source srcset="img/night.webp" type="image/webp"><img src="img/night.jpg" alt="A Tambora aircraft on night patrol above city lights" width="1733" height="908" loading="lazy"></picture>
  <div class="closer-in w">
   <p class="closer-line rv">The first drone<br><b>that talks back.</b></p>
-  <p class="closer-sub">In an emergency, sometimes the best thing is not being alone. So we built a drone you can have a conversation with.</p>
-  <div class="preorder"><i class="live"></i><span><b>Meet the Sagwic ChatBot at demo day: Cape Town, Thursday 22 April 2027.</b> Free invites go out in January.</span></div>
+  <p class="closer-sub">In an emergency, sometimes the best thing is not being alone. So we built a drone you can talk to. <b>Meet it at our free demo day in Cape Town on Thursday 22 April 2027.</b> Invites go out in January.</p>
   <form class="invite" id="invite" novalidate>
    <div class="inv-row">
     <label class="inv-f"><span>Full name</span><input id="inv-name" name="name" autocomplete="name" required maxlength="80"></label>
     <label class="inv-f"><span>Mobile number</span><input id="inv-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="082 123 4567" required maxlength="20"></label>
    </div>
    <label class="inv-ok"><input id="inv-consent" type="checkbox" required> <span>I agree that Tambora may contact me about the demo day. We'll only use your number for this, and you can ask us to remove it at any time.</span></label>
-   <div class="inv-actions"><button class="btn big" type="submit">Claim your free demo-day invite</button><a class="btn2" href="#aircraft">Back to the start</a></div>
+   <div class="inv-actions"><button class="btn big" type="submit">Reserve my spot</button><a class="btn2" href="#aircraft">Back to the start</a></div>
    <p class="inv-msg" id="inv-msg" role="status" aria-live="polite"></p>
   </form>
  </div>

@@ -35,8 +35,9 @@ img{display:block;max-width:100%;height:auto}
 .stripe i:nth-child(1){background:var(--s1)}.stripe i:nth-child(2){background:var(--s2)}.stripe i:nth-child(3){background:var(--s3)}.stripe i:nth-child(4){background:var(--s4)}
 
 header{display:flex;justify-content:space-between;align-items:center;padding:30px 0}
-.btn{font-size:14px;font-weight:500;text-decoration:none;background:var(--ink);color:#fff;padding:11px 20px;border-radius:999px;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;transition:background .3s}
-.btn:hover{background:#26303A}
+.btn{position:relative;overflow:hidden;font-size:14px;font-weight:500;text-decoration:none;background:var(--ink);color:#fff;padding:11px 22px 14px;border-radius:12px;display:inline-flex;align-items:center;gap:8px;white-space:nowrap;transition:transform .3s,box-shadow .3s}
+.btn::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--s1) 0 25%,var(--s2) 25% 50%,var(--s3) 50% 75%,var(--s4) 75% 100%)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(11,17,24,.18)}
 .btn svg{width:14px;height:14px}
 
 /* hero */
@@ -123,7 +124,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  .w{padding:0 20px}
  header{padding:20px 0}
  .logo svg{height:21px}.logo .wm{font-size:17px}.logo{gap:6px}.stripe{height:4px}
- .btn{padding:9px 15px;font-size:13px}
+ .btn{padding:9px 15px 12px;font-size:13px}
  .facts{gap:22px}
  .ms{grid-template-columns:1fr;gap:6px;padding:22px 0}
  .ms .d{padding-top:0}

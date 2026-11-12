@@ -109,7 +109,7 @@ background-image:linear-gradient(#211D33 1px,transparent 1px),linear-gradient(90
 .follow div.t{font-size:22px;font-weight:300;line-height:1.25;margin-top:18px}
 .follow div.t b{font-weight:500}
 
-@media (max-width:560px){.closer{background:#03060B!important}.closer picture{height:150vw!important}.closer picture img{object-position:50% 100%!important}.closer .closer-in{position:relative;margin-top:-96px}}
+@media (max-width:560px){.closer{background:#03060B!important}.closer picture{height:200vw!important;max-height:none!important}.closer picture img{object-position:50% 100%!important}.closer .closer-in{position:relative;margin-top:-72px}}
 
 /* lean machine */
 .pn-lbl.lm-open{background:none;border:1px solid rgba(11,17,24,.16);padding:8px 16px;margin:-4px 0 0;border-radius:999px;font:inherit;font-size:15px;font-weight:500;letter-spacing:.04em;color:#5A6470;cursor:pointer;transition:background .25s,color .25s}
@@ -449,9 +449,9 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </section>
 
 <section class="closer" id="closer">
- <picture><source media="(max-width:560px)" srcset="img/night-m.webp" type="image/webp"><source media="(max-width:560px)" srcset="img/night-m.jpg"><source srcset="img/night.webp" type="image/webp"><img src="img/night.jpg" alt="A Tambora aircraft on night patrol above city lights" width="1733" height="908" loading="lazy"></picture>
+ <picture><source media="(max-width:560px)" srcset="img/night-m2.webp" type="image/webp"><source media="(max-width:560px)" srcset="img/night-m2.jpg"><source srcset="img/night.webp" type="image/webp"><img src="img/night.jpg" alt="A Tambora aircraft on night patrol above city lights" width="1733" height="908" loading="lazy"></picture>
  <div class="closer-in w">
-  <p class="closer-line rv">The first drone<br><b>that talks back.</b></p>
+  <p class="closer-line rv">You're in.<br><b>See you on 22 April.</b></p>
   <p class="closer-sub"><span class="cs-h">Drones don't talk.<br><b>Ours does.</b></span><span class="cs-s">Hear it first on 22 April. Free invites go out in January.</span></p>
   <form class="invite" id="invite" novalidate>
    <div class="inv-row">
@@ -496,7 +496,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <script>
 (function(){
  var f=document.getElementById('invite');if(!f)return;
- try{if(localStorage.getItem('tb_invite')){f.classList.add('done');var cl0=f.closest('.closer');if(cl0)cl0.classList.add('signed');document.getElementById('inv-msg').textContent='You\'re on the list. We\'ll send your invite in January.'}}catch(e){}
+ try{var tb=localStorage.getItem('tb_invite');if(tb){f.classList.add('done');var cl0=f.closest('.closer');if(cl0)cl0.classList.add('signed');document.getElementById('inv-msg').textContent=(tb.length>1?tb+', look':'Look')+' out for our message in January. That\'s your invite.'}}catch(e){}
  document.querySelectorAll('a[href="#invite"]').forEach(function(a){a.addEventListener('click',function(){setTimeout(function(){document.getElementById('inv-name').focus({preventScroll:true})},700)})});
  var n=document.getElementById('inv-name'),p=document.getElementById('inv-phone'),m=document.getElementById('inv-msg'),b=f.querySelector('button');
  function msg(t,e){m.textContent=t;m.className='inv-msg'+(e?' err':'')}
@@ -508,7 +508,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   b.disabled=true;msg('Adding you to the list…');
   var d=new FormData();d.append('entry.1394393449',name);d.append('entry.2555204',ph);d.append('entry.1614850659','Yes (by submitting)');
   fetch('https://docs.google.com/forms/d/e/1FAIpQLSf0Ejk1RYoVrohEpsW4PSeTVsEy1I2WBUvD8XTt9u8j2iIgfw/formResponse',{method:'POST',mode:'no-cors',body:d}).then(function(){
-   f.classList.add('done');var cl=f.closest('.closer');if(cl)cl.classList.add('signed');try{localStorage.setItem('tb_invite','1')}catch(e){}msg('You\'re on the list, '+name.split(' ')[0]+'. We\'ll send your invite in January.');
+   f.classList.add('done');var cl=f.closest('.closer');if(cl)cl.classList.add('signed');try{localStorage.setItem('tb_invite',name.split(' ')[0])}catch(e){}msg(name.split(' ')[0]+', look out for our message in January. That\'s your invite.');
   }).catch(function(){b.disabled=false;msg('That didn\'t go through. Check your connection and try again.',1)});
  });
 })();

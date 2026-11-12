@@ -197,10 +197,6 @@ background-image:linear-gradient(#211D33 1px,transparent 1px),linear-gradient(90
 .sg-go{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:#1A3A72;color:#fff;text-decoration:none;font-size:14px;font-weight:600;transition:transform .25s,background .25s}
 .sg-go:hover{background:#0F2A57;transform:translateY(-1px)}
 @media (max-width:560px){.sg-logo{height:46px;margin-bottom:18px}.sg-lead{font-size:15px}.sg-steps{grid-template-columns:1fr;gap:10px;margin-top:20px}.sg-steps div{border-top-width:1px;padding-top:9px}.sg-steps .n{display:none}.sg-steps h4{margin:0;font-size:16px}.sg-steps p{margin-top:2px;font-size:13.5px}.sg-foot{margin-top:20px}.sg-foot{flex-direction:column;align-items:flex-start}.sg-go{width:100%;justify-content:center}}
-/* hero motion: slow push-in with a gentle hover drift */
-.tz>picture img{transform-origin:62% 48%;animation:heroDrift 18s ease-in-out infinite alternate;will-change:transform}
-@keyframes heroDrift{0%{transform:scale(1.02) translate3d(0,0,0)}25%{transform:scale(1.04) translate3d(-.4%,-.5%,0)}50%{transform:scale(1.06) translate3d(-.8%,.2%,0)}75%{transform:scale(1.075) translate3d(-1.1%,-.4%,0)}100%{transform:scale(1.09) translate3d(-1.4%,0,0)}}
-@media (prefers-reduced-motion:reduce){.tz>picture img{animation:none}}
 /* tesla-style hero */
 html{scroll-behavior:smooth}
 .tz{position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden;padding:0}

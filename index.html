@@ -112,8 +112,8 @@ background-image:linear-gradient(#211D33 1px,transparent 1px),linear-gradient(90
 @media (max-width:560px){.closer{background:#03060B!important}.closer picture{height:150vw!important}.closer picture img{object-position:50% 100%!important}.closer .closer-in{position:relative;margin-top:-96px}}
 
 /* lean machine */
-.lm-open{background:none;border:0;padding:6px 12px;margin:-6px -12px;border-radius:999px;font:inherit;font-size:13px;letter-spacing:.06em;color:var(--mute);cursor:pointer;transition:background .25s,color .25s}
-.lm-open:hover,.lm-open:focus-visible{background:rgba(11,17,24,.06);color:var(--ink);outline:none}
+.pn-lbl.lm-open{background:none;border:1px solid rgba(11,17,24,.16);padding:8px 16px;margin:-4px 0 0;border-radius:999px;font:inherit;font-size:15px;font-weight:500;letter-spacing:.04em;color:#5A6470;cursor:pointer;transition:background .25s,color .25s}
+.pn-lbl.lm-open:hover,.pn-lbl.lm-open:focus-visible{background:rgba(11,17,24,.06);color:var(--ink);outline:none}
 .lm-arr{display:inline-block;transition:transform .3s;animation:nudge 2.4s ease-in-out infinite}
 .lm-open:hover .lm-arr{transform:translateX(4px);animation:none}
 .lm{border:0;padding:0;margin:auto;width:min(820px,calc(100% - 32px));max-height:calc(100% - 48px);border-radius:16px;background:#F2EFE9;color:#0B1118;box-shadow:0 40px 120px rgba(11,17,24,.45);overflow:auto}
@@ -132,15 +132,20 @@ background-image:linear-gradient(#211D33 1px,transparent 1px),linear-gradient(90
 .lm-split{display:grid;grid-template-columns:1fr auto 1fr;gap:28px;margin-top:28px;align-items:start}
 .lm-split .mid{display:flex;flex-direction:column;align-items:center;gap:6px;padding-top:4px}
 .lm-split .mid svg{width:30px;height:28px}
-.lm-split .mid i{width:1px;height:96px;background:#D9D3C8}
+.lm-split .mid i{width:1px;height:150px;background:#D9D3C8}
 .lm-col h4{margin:0;font-size:clamp(40px,5vw,60px);font-weight:300;letter-spacing:-.04em;line-height:1}
 .lm-col h4 b{font-weight:600}
-.lm-col.tech h4 b{color:#2457A6}.lm-col.talk h4 b{color:#7C5CFF}
+.lm-col h4{display:flex;align-items:flex-end}
+.lm-t{display:inline-flex;flex-direction:column;gap:.06em;margin-right:.04em;padding-bottom:.11em}
+.lm-t svg{height:.72em;width:auto;fill:#0B1118;display:block}
+.lm-t i{display:block;height:.07em;border-radius:1px}
+.lm-col.tech .lm-t i{background:#2457A6}.lm-col.talk .lm-t i{background:#7C5CFF}
+.lm-col.talk h4{justify-content:flex-end}
 .lm-col .nm{margin-top:12px;font-size:14px;font-weight:600}
 .lm-col .ro{font-size:12.5px;color:var(--mute);margin-top:2px}
 .lm-col p{margin:12px 0 0;font-size:15px;line-height:1.55;color:#3A3D42}
 .lm-col.talk{text-align:right}
-@media (max-width:560px){.lm{width:100%;max-width:none;max-height:none;height:100%;border-radius:0}.lm-in{padding:56px 20px 32px}.lm-split{grid-template-columns:1fr 1fr;gap:18px}.lm-split .mid{display:none}.lm-col.talk{text-align:left}.lm-col p{font-size:14px}}
+@media (max-width:560px){.lm{width:100%;max-width:none;max-height:none;height:100%;border-radius:0}.lm-in{padding:56px 20px 32px}.lm-split{grid-template-columns:1fr 1fr;gap:18px}.lm-split .mid{display:none}.lm-col.talk{text-align:left}.lm-col.talk h4{justify-content:flex-start}.lm-col p{font-size:14px}.pn-lbl.lm-open{font-size:14px}}
 @media (prefers-reduced-motion:reduce){.lm[open]{animation:none}.lm-arr{animation:none}}
 /* tesla-style hero */
 html{scroll-behavior:smooth}
@@ -518,15 +523,15 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
   <div class="lm-split">
    <div class="lm-col tech">
-    <h4><b>T</b>ech</h4>
+    <h4 aria-label="Tech"><span class="lm-t" aria-hidden="true"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><i></i></span>ech</h4>
     <div class="nm">Tumelo Mokoena</div><div class="ro">Co-founder</div>
     <p>Director of Safeguard. Builds the security drones that fly for Safeguard and Tambora.</p>
    </div>
-   <div class="mid" aria-hidden="true"><svg viewBox="22 34 156 142"><path fill="#0B1118" d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><i></i></div>
+   <div class="mid" aria-hidden="true"><i></i></div>
    <div class="lm-col talk">
-    <h4><b>T</b>alk</h4>
+    <h4 aria-label="Talk"><span class="lm-t" aria-hidden="true"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><i></i></span>alk</h4>
     <div class="nm">Ben Hendrikse</div><div class="ro">Co-founder, CEO</div>
-    <p>Runs the company and tells the story. And honestly? He just loves drones.</p>
+    <p>Runs the company and tells the story. And honestly? They just love building drones.</p>
    </div>
   </div>
  </div>

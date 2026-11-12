@@ -146,6 +146,9 @@ background-image:linear-gradient(#211D33 1px,transparent 1px),linear-gradient(90
 @media (max-width:560px){.night-band img{height:62vh;object-position:80% 40%}.nb-cap{left:20px;bottom:18px}}
 .hiw{background:var(--paper);padding:104px 0 112px!important}
 .hiw-k{font-size:13px;letter-spacing:.06em;color:var(--mute)}
+.hiw-top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.hiw-tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.04em;color:var(--body);border:1px solid #D9D3C8;border-radius:999px;padding:5px 12px 5px 10px}
+.hiw-tag i{width:6px;height:6px;border-radius:50%;background:var(--s1)}
 .hiw-h{margin:8px 0 56px;font-size:clamp(32px,4vw,52px);font-weight:300;letter-spacing:-.035em;line-height:1.05}
 .hiw-steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;counter-reset:none}
 .hiw-steps li{position:relative;background:#fff;border-radius:16px;padding:28px 26px 30px}
@@ -557,7 +560,7 @@ footer.ft .w{display:block}
 
 <section class="hiw" id="how" aria-labelledby="hiw-t">
  <div class="w">
-  <span class="hiw-k">How it works</span>
+  <div class="hiw-top"><span class="hiw-k">How it works</span><span class="hiw-tag"><i></i>SafeGuard × Tambora · Co-built prototype</span></div>
   <h2 class="hiw-h" id="hiw-t">Help, in three steps.</h2>
   <ol class="hiw-steps">
    <li>

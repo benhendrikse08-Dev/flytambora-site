@@ -144,18 +144,16 @@ background-image:linear-gradient(#211D33 1px,transparent 1px),linear-gradient(90
 .night-band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,6,11,0) 60%,rgba(3,6,11,.6) 100%)}
 .nb-cap{position:absolute;left:max(32px,calc((100% - 1160px)/2 + 32px));bottom:26px;z-index:1;display:flex;align-items:center;gap:8px;color:#fff;font-size:13px;letter-spacing:.04em;font-weight:500}
 @media (max-width:560px){.night-band img{height:62vh;object-position:80% 40%}.nb-cap{left:20px;bottom:18px}}
-.hiw{background:var(--paper);padding:96px 0 104px!important}
-.hiw-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.hiw-k{font-size:13px;letter-spacing:.06em;color:var(--mute)}
-.hiw-tag{font-size:11.5px;color:var(--mute)}
-.hiw-h{margin:10px 0 52px;font-size:clamp(30px,3.6vw,46px);font-weight:300;letter-spacing:-.03em;line-height:1.08}
-.hiw-steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
-.hiw-steps li{border-top:2px solid var(--ink);padding-top:16px}
+.wsec .globe{display:block;width:clamp(150px,18vw,220px)}
+.wsec .globe img{width:100%;height:auto;mix-blend-mode:multiply}
+.hiw-steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:4px}
+.hiw-steps li{border-top:2px solid var(--ink);padding-top:14px}
 .hiw-steps li:nth-child(1){border-color:var(--s1)}.hiw-steps li:nth-child(2){border-color:var(--s2)}.hiw-steps li:nth-child(3){border-color:var(--s4)}
 .hiw-n{font-size:12px;color:var(--mute)}
-.hiw-steps h3{margin-top:10px;font-size:19px;font-weight:600;letter-spacing:-.01em}
-.hiw-steps p{margin-top:6px;font-size:15px;line-height:1.55;color:var(--body);max-width:30ch}
-@media (max-width:900px){.hiw{padding:64px 0 72px!important}.hiw-h{margin-bottom:32px}.hiw-steps{grid-template-columns:1fr;gap:28px}}
+.hiw-steps h4{margin-top:8px;font-size:18px;font-weight:600;letter-spacing:-.01em}
+.hiw-steps p{margin-top:6px;font-size:14.5px;line-height:1.55;color:var(--body)}
+.hw-tag{margin-top:30px;padding-top:14px;border-top:1px solid #DDD7CC;font-size:11.5px;color:var(--mute)}
+@media (max-width:700px){.hiw-steps{grid-template-columns:1fr;gap:22px}}
 /* demo day + sign-up (redesign) */
 .dd{padding:96px 0;background:var(--paper)}
 .dd-card{display:grid;grid-template-columns:1.05fr 1fr;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(11,17,24,.10)}
@@ -555,15 +553,12 @@ footer.ft .w{display:block}
  <span class="nb-cap"><i class="live"></i>On patrol, day and night</span>
 </section>
 
-<section class="hiw" id="how" aria-labelledby="hiw-t">
- <div class="w">
-  <div class="hiw-top"><span class="hiw-k">How it works</span><span class="hiw-tag mono">SafeGuard × Tambora · co-built prototype</span></div>
-  <h2 class="hiw-h" id="hiw-t">What happens when<br>the alarm goes off.</h2>
-  <ol class="hiw-steps">
-   <li><span class="hiw-n mono">01</span><h3>Alarm.</h3><p>A security alarm or panic button sends the alert to Tambora.</p></li>
-   <li><span class="hiw-n mono">02</span><h3>Launch.</h3><p>The drone lifts off from a rooftop dock nearby and flies itself there.</p></li>
-   <li><span class="hiw-n mono">03</span><h3>Eyes on it.</h3><p>The guard watches live on their phone. The drone can talk to whoever's on the ground.</p></li>
-  </ol>
+<section class="pn paper wsec" id="how">
+ <div class="w pn-in">
+  <span class="pn-lbl rv">Why it matters</span>
+  <picture class="globe rv"><source srcset="img/globe.webp" type="image/webp"><img src="img/globe.jpg" alt="" width="440" height="437" loading="lazy"></picture>
+  <h2 class="rv">The world needs to be more secure.</h2>
+  <button class="pn-lbl lm-open rv" type="button" data-dlg="hw" aria-haspopup="dialog" aria-controls="hw">How it works <span class="lm-arr" aria-hidden="true">→</span></button>
  </div>
 </section>
 
@@ -703,6 +698,19 @@ footer.ft .w{display:block}
    <figcaption>The original SafeGuard team, now all building within Tambora for SafeGuard.</figcaption>
   </figure>
   <div class="sg-foot"><span>Led by <b>Tumelo Mokoena</b>, Director. Tambora's co-founder and COO.</span><a class="sg-go" href="https://www.safeguardtechno.com" target="_blank" rel="noopener">Visit SafeGuard</a></div>
+ </div>
+</dialog>
+<dialog class="lm" id="hw" aria-labelledby="hw-t">
+ <div class="lm-in">
+  <button class="lm-x" type="button" aria-label="Close">×</button>
+  <span class="lm-k">How it works</span>
+  <h3 id="hw-t">What happens when<br><b>the alarm goes off.</b></h3>
+  <ol class="hiw-steps">
+   <li><span class="hiw-n mono">01</span><h4>Alarm.</h4><p>A security alarm or panic button sends the alert to Tambora.</p></li>
+   <li><span class="hiw-n mono">02</span><h4>Launch.</h4><p>The drone lifts off from a rooftop dock nearby and flies itself there.</p></li>
+   <li><span class="hiw-n mono">03</span><h4>Eyes on it.</h4><p>The guard watches live on their phone. The drone can talk to whoever's on the ground.</p></li>
+  </ol>
+  <p class="hw-tag mono">SafeGuard × Tambora · co-built prototype</p>
  </div>
 </dialog>
 <dialog class="lm" id="lm" aria-labelledby="lm-t">

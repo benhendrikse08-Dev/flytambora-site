@@ -176,6 +176,9 @@ html{scroll-behavior:smooth}
 .closer:not(.signed) .closer-line{display:none}
 .closer:not(.signed) .closer-sub{font-size:clamp(20px,2.2vw,26px);line-height:1.45;margin-top:0;color:#E6EAEE;max-width:600px}
 .closer.signed .closer-sub{display:none}
+.cs-h{display:block;color:#fff;font-size:clamp(34px,4.4vw,60px);font-weight:300;line-height:1.04;letter-spacing:-.035em}
+.cs-h b{font-weight:500}
+.cs-s{display:block;margin-top:14px;font-size:clamp(15px,1.4vw,17px);color:#D7DCE2}
 .invite.done .inv-msg{order:-1;margin-bottom:6px}
 .closer.signed .closer-line{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
@@ -397,7 +400,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  <picture><source srcset="img/night.webp" type="image/webp"><img src="img/night.jpg" alt="A Tambora aircraft on night patrol above city lights" width="1733" height="908" loading="lazy"></picture>
  <div class="closer-in w">
   <p class="closer-line rv">The first drone<br><b>that talks back.</b></p>
-  <p class="closer-sub">Our drones fly to an emergency on their own, often before anyone else arrives. So we taught them to talk: if you're scared or hurt, ask what to do, and it answers, powered by Sagwic's in-house AI. <b>Meet it at our free demo day in Cape Town on Thursday 22 April 2027.</b> Invites go out in January.</p>
+  <p class="closer-sub"><span class="cs-h">Be there<br><b>when it speaks.</b></span><span class="cs-s">Free invites go out in January. Add your name to get one.</span></p>
   <form class="invite" id="invite" novalidate>
    <div class="inv-row">
     <label class="inv-f"><span>Full name</span><input id="inv-name" name="name" autocomplete="name" required maxlength="80"></label>

@@ -185,6 +185,42 @@ html{scroll-behavior:smooth}
 .ph-shot img{width:100%;height:auto}
 @media (max-width:560px){.ph-shot{margin-top:36px}}
 .ph-shot .cap{margin-top:8px;font-size:12px}
+/* full-screen one-liner panels */
+:root{--s1b:#5B8FE0;--s2b:#3CC489}
+.pn{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:96px 0;position:relative;overflow:hidden}
+.pn.paper{background:var(--paper);color:var(--ink)}
+.pn.ink{background:var(--ink);color:var(--paper)}
+.pn.lab{background:var(--graph);color:#fff;background-image:linear-gradient(#211D33 1px,transparent 1px),linear-gradient(90deg,#211D33 1px,transparent 1px);background-size:28px 28px}
+.pn-in{width:100%;display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px}
+.pn h2{font-size:clamp(48px,7.6vw,104px);font-weight:500;letter-spacing:-.045em;line-height:.98;text-wrap:balance}
+.pn-lbl{display:inline-flex;align-items:center;gap:8px;font-size:13px;letter-spacing:.06em;color:var(--mute)}
+.pn.ink .pn-lbl{color:#9AA6B2}.pn.lab .pn-lbl{color:#8C89A0}
+.pn-img{width:min(760px,100%);margin-top:28px}
+.pn-img.wide{width:min(940px,100%)}
+.pn-img img{width:100%;height:auto;border-radius:4px}
+.pn.ink .pn-img img{box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.scan{position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:#0B1118;background-image:linear-gradient(rgba(91,143,224,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(91,143,224,.12) 1px,transparent 1px);background-size:40px 40px}
+.scan .sweep{position:absolute;left:0;right:0;top:0;height:30%;background:linear-gradient(180deg,transparent,rgba(111,168,220,.22),transparent);animation:sweep 3.6s linear infinite}
+@keyframes sweep{from{transform:translateY(-100%)}to{transform:translateY(340%)}}
+.scan .box{position:absolute;border:2px solid #6FA8DC;border-radius:3px}
+.scan .box em{position:absolute;left:-2px;top:-24px;font-style:normal;font-family:"JetBrains Mono",monospace;font-size:11px;background:#6FA8DC;color:#0B1118;padding:3px 7px;white-space:nowrap}
+.scan .b1{left:22%;top:44%;width:7%;height:30%;animation:blinkb 3.6s steps(1) infinite}
+.scan .b2{left:58%;top:52%;width:20%;height:22%;border-color:#F2B705;animation:blinkb 3.6s steps(1) infinite .9s}
+.scan .b2 em{background:#F2B705}
+@keyframes blinkb{0%,8%{opacity:0}9%,100%{opacity:1}}
+.scan .hud{position:absolute;left:16px;bottom:12px;font-size:11px;color:#9AA6B2;letter-spacing:.08em}
+.trio{display:flex;gap:clamp(20px,4vw,60px);justify-content:center;flex-wrap:wrap}
+.trio h2{font-size:clamp(44px,6.2vw,88px)}
+.trio div{display:flex;flex-direction:column;align-items:center;gap:10px}
+.trio span{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#9AA6B2}
+.pn-bar{display:flex;gap:6px;width:min(360px,70%);height:10px;margin-top:18px}
+.pn-bar i{flex:1;transform:scaleX(0);transform-origin:left;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.pn-bar i:nth-child(1){background:var(--s1)}.pn-bar i:nth-child(2){background:var(--s2);transition-delay:.12s}.pn-bar i:nth-child(3){background:var(--s3);transition-delay:.24s}.pn-bar i:nth-child(4){background:var(--s4);transition-delay:.36s}
+.pn-bar.in i{transform:scaleX(1)}
+.pn-circle{width:min(340px,80vw);margin:12px auto 0}
+.pn-circle span{font-size:clamp(40px,6vw,64px)}
+.pn .meet{margin-top:8px}
+@media (max-width:560px){.pn{padding:72px 0}.pn-lbl{font-size:12px}.trio{flex-direction:column;gap:18px}.scan .box em{font-size:9px;top:-20px}}
 /* --- life --- */
 .logo .stripe i{transform-origin:left;animation:grow .7s cubic-bezier(.2,.7,.2,1) both}
 .logo .stripe i:nth-child(2){animation-delay:.12s}.logo .stripe i:nth-child(3){animation-delay:.24s}.logo .stripe i:nth-child(4){animation-delay:.36s}
@@ -257,7 +293,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </head>
 <body>
 
-<section class="tz">
+<section class="tz" id="top">
  <picture><source srcset="img/hero.webp" type="image/webp"><img src="img/hero.jpg" alt="Two Tambora aircraft flying low over a mountain ridge at dusk" width="1733" height="908" fetchpriority="high"></picture>
  <div class="w tz-head">
   <header>
@@ -265,7 +301,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <span class="top"><svg viewBox="22 34 156 142" aria-hidden="true"><path fill="#0B1118" d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><span class="wm">TAMBORA</span></span>
     <span class="stripe"><i></i><i></i><i></i><i></i></span>
    </a>
-   <nav><a href="#aircraft">Aircraft</a><a href="#phases">Phases</a><a href="#lab">Lab</a><a href="#next">What's next</a></nav>
+   <nav><a href="#steps">Aircraft</a><a href="#phases">Phases</a><a href="#lab">Lab</a><a href="#invite">Demo day</a></nav>
    <a class="hlink" href="Tambora-Our-MVP-Site.pdf?v=20261112c" download>PDF ↓</a>
   </header>
  </div>
@@ -275,49 +311,55 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  </div>
  <div class="tz-cta">
   <a class="btn big hero-cta" href="#invite"><i class="live" aria-hidden="true"></i><span>Meet the drone</span><span class="arr" aria-hidden="true">→</span></a>
-  <a class="btn2" href="#aircraft">Learn more</a>
+  <a class="btn2" href="#steps">Learn more</a>
  </div>
 </section>
 
-<section id="aircraft" style="padding:88px 0 32px">
-<div class="w">
-<div class="hero">
- <div>
-  <div class="kicker">Tambora</div>
-  <h2>One company.<br><b>Built in increments.</b></h2>
-  <p class="lede">Tambora builds autonomous drones, the docks they live in and the AI that flies them, and owns all of it. We start with security in South Africa, and every new mission starts with everything the last one proved.</p>
+<section class="pn paper" id="steps">
+ <div class="w pn-in">
+  <span class="pn-lbl rv">One company</span>
+  <h2 class="rv">Built in steps.</h2>
+  <div class="craft pn-img"><div class="pic"><div class="shadow"></div><picture><source srcset="img/aircraft.webp" type="image/webp"><img src="img/aircraft.png" alt="The phase one Tambora aircraft" width="1400" height="863" loading="lazy"></picture></div></div>
  </div>
- <div class="craft">
-  <div class="pic"><div class="shadow"></div>
-  <picture><source srcset="img/aircraft.webp" type="image/webp"><img src="img/aircraft.png" alt="The phase one Tambora aircraft" width="1400" height="863" loading="lazy"></picture></div>
-  <div class="cap">Concept render of the phase one aircraft.</div>
- </div>
-</div>
-<div class="facts">
- <div><span>Built in</span>South Africa</div>
- <div><span>First market</span>Security</div>
- <div><span>Next</span>Medical, then firefighting</div>
-</div>
-</div>
 </section>
 
-<section class="statement">
- <div class="w"><p class="rv">Most autonomy is built for consumers. <b>Ours is built for the services that protect them.</b></p><div class="bar"><i></i><i></i><i></i><i></i></div></div>
+<section class="pn ink">
+ <div class="w pn-in">
+  <span class="pn-lbl rv"><i class="live"></i>Phase one · in action now</span>
+  <h2 class="rv">First on the scene.</h2>
+  <figure class="pn-img wide rv"><picture><source srcset="img/live-view.webp" type="image/webp"><img src="img/live-view.jpg" alt="Operator's view from a Tambora aircraft over Stellenbosch at dusk" width="1536" height="1024" loading="lazy"></picture></figure>
+ </div>
 </section>
 
-<section id="phases">
- <div class="w">
-  <div class="ph-head rv">
-   <div><div class="kicker">The phases</div><h2>From simple<br><b>to complex.</b></h2></div>
-   <p style="max-width:440px">We start with the simplest aircraft and the simplest job, then move up one step at a time. Each version flies before the next one is built.</p>
+<section class="pn paper">
+ <div class="w pn-in">
+  <span class="pn-lbl rv">Autonomy</span>
+  <h2 class="rv">Reads the ground.</h2>
+  <div class="scan pn-img wide rv" aria-hidden="true">
+   <i class="sweep"></i>
+   <span class="box b1"><em>PERSON · 97%</em></span>
+   <span class="box b2"><em>VEHICLE · 92%</em></span>
+   <span class="hud mono">ALT 120 m · AUTONOMOUS</span>
   </div>
-  <div class="phases">
-   <div class="phase"><div class="n">01</div><h3>Security</h3><div class="st on"><span class="live"></span>In action now</div><p>Drones launch from docks on site, patrol day and night, and alert response teams quickly.</p></div>
-   <div class="phase"><div class="n">02</div><h3>Medical</h3><div class="st">Next</div><p>Heavy-load delivery of blood, medicine and equipment between hospitals and clinics.</p></div>
-   <div class="phase"><div class="n">03</div><h3>Firefighting</h3><div class="st">Later</div><p>Heavy-lift aircraft that help detect, map and fight wildfires.</p></div>
+ </div>
+</section>
+
+<section class="pn ink" id="phases">
+ <div class="w pn-in">
+  <span class="pn-lbl rv">The phases</span>
+  <div class="trio rv">
+   <div><h2 style="color:var(--s1b)">Security.</h2><span>Now</span></div>
+   <div><h2 style="color:var(--s2b)">Medical.</h2><span>Next</span></div>
+   <div><h2 style="color:var(--s3)">Fire.</h2><span>Later</span></div>
   </div>
-  <figure class="ph-shot"><picture><source srcset="img/live-view.webp" type="image/webp"><img src="img/live-view.jpg" alt="Operator's view from a Tambora aircraft over Stellenbosch at dusk" width="1536" height="1024" loading="lazy"></picture><figcaption class="cap">Phase one in action: the operator's view on a patrol over Stellenbosch (concept).</figcaption></figure>
-  <div class="after rv">And after that: heavy-load aviation, and one day, vehicles that fly.</div>
+ </div>
+</section>
+
+<section class="pn paper">
+ <div class="w pn-in">
+  <span class="pn-lbl rv">Why we exist</span>
+  <h2 class="rv">Autonomy for<br>essential services.</h2>
+  <div class="pn-bar rv"><i></i><i></i><i></i><i></i></div>
  </div>
 </section>
 
@@ -343,27 +385,6 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  </div>
 </section>
 
-<section id="next">
- <div class="w next-in">
-  <div>
-   <div class="kicker">What's next</div>
-   <h2>What's next.<br><b>The year ahead.</b></h2>
-   <p>Mostly software first, with early hardware tested alongside it. This page will be updated as each step is reached.</p>
-   <div class="follow">
-    <span class="logo"><span class="top"><svg viewBox="22 34 156 142" aria-hidden="true"><path fill="#F2EFE9" d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><span class="wm">TAMBORA</span></span><span class="stripe"><i></i><i></i><i></i><i></i></span></span>
-    <div class="t">Follow the first mission at <b>flytambora.com</b></div>
-   </div>
-  </div>
-  <div>
-   <div class="ms rv"><div class="d on"><span class="live"></span>2026</div><div><h3>Building the first autonomous MVPs</h3><p>The first aircraft, dock and AI working together, in security.</p></div></div>
-   <div class="ms rv"><div class="d">End of 2026</div><div><h3>The full flytambora.com launches</h3><p>The complete story: the company, the platform and every phase.</p></div></div>
-   <div class="ms rv"><div class="d">January 2027</div><div><h3>Free demo-day invites go out</h3><p>Our first advisory board is finalised the same month.</p></div></div>
-   <div class="ms rv"><div class="d">22 April 2027</div><div><h3>Demo day in Cape Town: the Sagwic ChatBot</h3><p>See it fly, then talk to it. The first drone that talks back.</p></div></div>
-   <div class="ms rv"><div class="d">2027</div><div><h3>Software first, early hardware tests</h3><p>Mainly AI and platform development, with hardware trials alongside.</p></div></div>
-  </div>
- </div>
-</section>
-
 <section class="closer" id="closer">
  <picture><source srcset="img/night.webp" type="image/webp"><img src="img/night.jpg" alt="A Tambora aircraft on night patrol above city lights" width="1733" height="908" loading="lazy"></picture>
  <div class="closer-in w">
@@ -375,7 +396,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <label class="inv-f"><span>Mobile number</span><input id="inv-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="082 123 4567" required maxlength="20"></label>
    </div>
    <label class="inv-ok"><input id="inv-consent" type="checkbox" required> <span>I agree that Tambora may contact me about the demo day. We'll only use your number for this, and you can ask us to remove it at any time.</span></label>
-   <div class="inv-actions"><button class="btn big" type="submit">Reserve my spot</button><a class="btn2" href="#aircraft">Back to the start</a></div>
+   <div class="inv-actions"><button class="btn big" type="submit">Reserve my spot</button><a class="btn2" href="#top">Back to the start</a></div>
    <p class="inv-msg" id="inv-msg" role="status" aria-live="polite"></p>
   </form>
  </div>

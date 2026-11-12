@@ -106,6 +106,24 @@ background-image:linear-gradient(#211D33 1px,transparent 1px),linear-gradient(90
 .follow div.t{font-size:22px;font-weight:300;line-height:1.25;margin-top:18px}
 .follow div.t b{font-weight:500}
 
+/* tesla-style hero */
+html{scroll-behavior:smooth}
+.tz{position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden;padding:0}
+.tz picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:64% 50%}
+.tz-head{position:relative;z-index:2}
+.tz header nav{display:flex;gap:28px;font-size:14px;font-weight:500}
+.tz header nav a,.hlink{text-decoration:none;padding:6px 10px;border-radius:6px;transition:background .25s}
+.tz header nav a:hover,.hlink:hover{background:rgba(255,255,255,.45)}
+.hlink{font-size:14px;font-weight:500}
+.tz-title{position:absolute;left:0;right:0;top:12.5vh;text-align:center;padding:0 20px}
+.tz h1{font-size:clamp(40px,5.2vw,64px);font-weight:500;letter-spacing:-.025em;line-height:1.05}
+.tz-sub{margin-top:10px;font-size:16px;color:#2E3135}
+.tz-cta{position:absolute;left:0;right:0;bottom:11vh;display:flex;justify-content:center;gap:20px;padding:0 20px;flex-wrap:wrap}
+.btn.big{width:264px;justify-content:center;padding:13px 0 16px;border-radius:8px;font-size:15px}
+.btn2{width:264px;display:inline-flex;justify-content:center;align-items:center;padding:13px 0;border-radius:8px;font-size:15px;font-weight:500;text-decoration:none;color:var(--ink);background:rgba(244,242,238,.88);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:background .25s}
+.btn2:hover{background:#fff}
+.tz-cap{position:absolute;right:20px;bottom:14px;font-size:11px;font-style:italic;color:rgba(255,255,255,.7)}
+.hero h2{font-size:clamp(40px,5vw,64px)}
 /* --- life --- */
 .logo .stripe i{transform-origin:left;animation:grow .7s cubic-bezier(.2,.7,.2,1) both}
 .logo .stripe i:nth-child(2){animation-delay:.12s}.logo .stripe i:nth-child(3){animation-delay:.24s}.logo .stripe i:nth-child(4){animation-delay:.36s}
@@ -145,6 +163,8 @@ footer{border-top:1px solid var(--rule);padding:28px 0 40px;font-size:13px;color
 footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 @media (max-width:900px){
+ .tz header nav{display:none}
+ .tz-title{top:11vh}
  .hero,.one,.ph-head,.lab-in,.next-in{grid-template-columns:1fr}
  .hero{padding:24px 0 40px;gap:24px}
  .phases{grid-template-columns:1fr;gap:36px}
@@ -156,6 +176,12 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  section{padding:72px 0}
 }
 @media (max-width:560px){
+ .tz-cta{flex-direction:column;align-items:center;gap:12px;bottom:7vh}
+ .btn.big,.btn2{width:100%;max-width:340px}
+ .tz picture img{object-position:46% 50%}
+ .tz-title{top:12vh}
+ .tz h1{font-size:38px}
+ .tz-sub{font-size:14px}
  .w{padding:0 20px}
  header{padding:20px 0}
  .logo svg{height:21px}.logo .wm{font-size:17px}.logo{gap:6px}.stripe{height:4px}
@@ -170,24 +196,40 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </head>
 <body>
 
-<div class="w">
-<header>
- <a class="logo" href="/" aria-label="Tambora">
-  <span class="top"><svg viewBox="22 34 156 142" aria-hidden="true"><path fill="#0B1118" d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><span class="wm">TAMBORA</span></span>
-  <span class="stripe"><i></i><i></i><i></i><i></i></span>
- </a>
- <a class="btn" href="Tambora-Our-MVP-Site.pdf?v=20261112" download><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M3 13h10"/></svg>Download PDF</a>
-</header>
+<section class="tz">
+ <picture><source srcset="img/hero.webp" type="image/webp"><img src="img/hero.jpg" alt="Two Tambora aircraft flying low over a mountain ridge at dusk" width="1733" height="908" fetchpriority="high"></picture>
+ <div class="w tz-head">
+  <header>
+   <a class="logo" href="/" aria-label="Tambora">
+    <span class="top"><svg viewBox="22 34 156 142" aria-hidden="true"><path fill="#0B1118" d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><span class="wm">TAMBORA</span></span>
+    <span class="stripe"><i></i><i></i><i></i><i></i></span>
+   </a>
+   <nav><a href="#aircraft">Aircraft</a><a href="#phases">Phases</a><a href="#lab">Lab</a><a href="#next">What's next</a></nav>
+   <a class="hlink" href="Tambora-Our-MVP-Site.pdf?v=20261112" download>PDF ↓</a>
+  </header>
+ </div>
+ <div class="tz-title">
+  <h1>Our MVP Site</h1>
+  <div class="tz-sub">The full site launches at the end of 2026.</div>
+ </div>
+ <div class="tz-cta">
+  <a class="btn big" href="Tambora-Our-MVP-Site.pdf?v=20261112" download><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M3 13h10"/></svg>Download PDF</a>
+  <a class="btn2" href="#aircraft">Learn more</a>
+ </div>
+ <span class="tz-cap">Concept render</span>
+</section>
 
+<section id="aircraft" style="padding:96px 0 40px">
+<div class="w">
 <div class="hero">
  <div>
-  <h1>Our MVP<br><b>Site.</b></h1>
-  <div class="soon">The full site launches at the end of 2026.</div>
+  <div class="kicker">Tambora</div>
+  <h2>Autonomous drones,<br><b>docks and AI.</b></h2>
   <p class="lede">Tambora builds autonomous drones, the docks they live in and the AI that flies them. We start with security in South Africa, with one simple aircraft and a clear focus on getting the AI and the data right. The later steps move into medical and heavy-load aviation, and eventually vehicles that fly.</p>
  </div>
  <div class="craft">
   <div class="pic"><div class="shadow"></div>
-  <picture><source srcset="img/aircraft.webp" type="image/webp"><img src="img/aircraft.png" alt="The phase one Tambora aircraft" width="1400" height="863"></picture></div>
+  <picture><source srcset="img/aircraft.webp" type="image/webp"><img src="img/aircraft.png" alt="The phase one Tambora aircraft" width="1400" height="863" loading="lazy"></picture></div>
   <div class="cap">Concept render of the phase one aircraft.</div>
  </div>
 </div>
@@ -197,6 +239,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  <div><span>Next</span>Medical, then firefighting</div>
 </div>
 </div>
+</section>
 
 <section class="statement">
  <div class="w"><p class="rv">Most autonomy is built for consumers. <b>Ours is built for the services that protect them.</b></p><div class="bar"><i></i><i></i><i></i><i></i></div></div>
@@ -217,7 +260,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  </div>
 </section>
 
-<section style="padding-top:24px">
+<section id="phases" style="padding-top:24px">
  <div class="w">
   <div class="ph-head rv">
    <div><div class="kicker">The phases</div><h2>From simple<br><b>to complex.</b></h2></div>
@@ -232,7 +275,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  </div>
 </section>
 
-<section class="lab">
+<section class="lab" id="lab">
  <div class="w lab-in">
   <div>
    <div class="kicker mono">// meanwhile, in the lab</div>
@@ -253,7 +296,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  </div>
 </section>
 
-<section>
+<section id="next">
  <div class="w next-in">
   <div>
    <div class="kicker">What's next</div>

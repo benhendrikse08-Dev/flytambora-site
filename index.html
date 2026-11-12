@@ -109,7 +109,17 @@ background-image:linear-gradient(#211D33 1px,transparent 1px),linear-gradient(90
 .follow div.t{font-size:22px;font-weight:300;line-height:1.25;margin-top:18px}
 .follow div.t b{font-weight:500}
 
-@media (max-width:560px){.closer{background:#03060B!important}.closer picture{height:200vw!important;max-height:none!important}.closer picture img{object-position:50% 100%!important}.closer .closer-in{position:relative;margin-top:-72px}}
+@media (max-width:560px){
+.closer{background:#03060B!important;display:flex!important;min-height:max(960px,240vw)!important}
+.closer picture{position:absolute!important;inset:0;height:auto!important}
+.closer picture img{object-position:50% 58%!important}
+.closer::after{display:block!important;background:linear-gradient(180deg,rgba(3,6,11,.35) 0%,rgba(3,6,11,0) 22%,rgba(3,6,11,0) 62%,rgba(3,6,11,.55) 100%)!important}
+.closer .closer-in{display:flex;flex-direction:column;padding-top:56px!important;padding-bottom:40px!important}
+.closer{align-items:stretch!important}
+.closer .invite{margin-top:auto}
+.closer.signed .closer-in{justify-content:flex-end}
+.closer.signed .invite{margin-top:18px}
+}
 
 /* lean machine */
 .pn-lbl.lm-open{background:none;border:1px solid rgba(11,17,24,.16);padding:8px 16px;margin:-4px 0 0;border-radius:999px;font:inherit;font-size:15px;font-weight:500;letter-spacing:.04em;color:#5A6470;cursor:pointer;transition:background .25s,color .25s}

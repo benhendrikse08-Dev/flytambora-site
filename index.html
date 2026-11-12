@@ -428,7 +428,22 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .invite.done .wa-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(37,211,102,.3)}
 .wa-link{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:15px;font-weight:500;color:#1E7A4C;text-decoration:none}
 .wa-link:hover span{text-decoration:underline;text-underline-offset:3px}
-footer.ft{background:#fff;border-top:0;padding:64px 0 32px;font-size:14px;color:var(--body)}
+.pn.meet{min-height:0!important;padding:140px 0 56px!important}
+.meet+.dd{padding-top:24px}
+.meet-p{font-weight:400!important;max-width:34ch;font-size:clamp(17px,1.6vw,20px);line-height:1.55;color:var(--body);text-wrap:balance}
+.meet-d{font-weight:400!important;font-size:12.5px;color:var(--mute);letter-spacing:.02em}
+.dd-t{font-size:22px;font-weight:500;letter-spacing:-.015em}
+.dd-s{margin-top:4px;font-size:14.5px;color:var(--mute)}
+.dd-body{justify-content:center}
+.ft-row{display:flex;align-items:center;gap:28px;overflow-x:auto;white-space:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:4px 0;mask-image:linear-gradient(90deg,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent)}
+.ft-row::-webkit-scrollbar{display:none}
+.ft-row>*{flex:none}
+.ft-row a,.ft-row button{color:var(--ink);text-decoration:none;background:none;border:0;padding:0;font:inherit;font-size:14px;cursor:pointer}
+.ft-row a:hover,.ft-row button:hover{text-decoration:underline;text-underline-offset:3px}
+.ft-row .ft-logo{margin-right:8px}
+.ft-row .ft-logo:hover{text-decoration:none}
+@media (min-width:1100px){.ft-row{mask-image:none;-webkit-mask-image:none}}
+footer.ft{background:#fff;border-top:0;padding:36px 0 28px;font-size:14px;color:var(--body)}
 footer.ft .w{display:block}
 .ft-top{display:grid;grid-template-columns:1.1fr 2fr;gap:48px;align-items:start}
 .ft-logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);font-weight:600;letter-spacing:.12em;font-size:15px}
@@ -440,7 +455,7 @@ footer.ft .w{display:block}
 .ft-col a,.ft-col button{color:var(--ink);text-decoration:none;background:none;border:0;padding:0;font:inherit;cursor:pointer;text-align:left}
 .ft-col a:hover,.ft-col button:hover,.ft-col a:focus-visible,.ft-col button:focus-visible{text-decoration:underline;text-underline-offset:3px;outline:none}
 .ft-col span{color:var(--mute)}
-.ft-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:56px;padding-top:20px;border-top:1px solid #ECE8E1;font-size:12.5px;color:var(--mute)}
+.ft-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:22px;padding-top:20px;border-top:1px solid #ECE8E1;font-size:12.5px;color:var(--mute)}
 @media (max-width:900px){.ft-top{grid-template-columns:1fr;gap:36px}}
 @media (max-width:560px){footer.ft{padding:48px 0 28px}.ft-cols{grid-template-columns:1fr 1fr;gap:28px 20px}.ft-cols .ft-col:first-child{grid-column:1/-1}.ft-bot{margin-top:40px;flex-direction:column;gap:4px}}
 
@@ -486,7 +501,7 @@ footer.ft .w{display:block}
     <span class="top"><svg viewBox="22 34 156 142" aria-hidden="true"><path fill="#0B1118" d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><span class="wm">TAMBORA</span></span>
     <span class="stripe"><i></i><i></i><i></i><i></i></span>
    </a>
-   <nav><a href="#steps">Aircraft</a><a href="#phases">Phases</a><a href="#lab">Lab</a><a href="#invite">Demo day</a></nav>
+   <nav><a href="#steps">Aircraft</a><a href="#phases">Phases</a><a href="#lab">Lab</a><a href="#meet">Demo day</a></nav>
   </header>
  </div>
  <div class="tz-title">
@@ -577,6 +592,15 @@ footer.ft .w{display:block}
  </div>
 </section>
 
+<section class="pn paper meet" id="meet">
+ <div class="w pn-in">
+  <span class="pn-lbl rv"><i class="live"></i>Demo day</span>
+  <h2 class="rv">Meet the first drone<br>with a personality.</h2>
+  <p class="meet-p rv">We build autonomous drones. For our first public demo, we gave one a voice, and we'd like you to talk to it.</p>
+  <p class="meet-d mono rv">22 April 2027 · Cape Town · Free entry</p>
+ </div>
+</section>
+
 <section class="dd" id="demo">
  <div class="w">
   <div class="dd-card">
@@ -585,9 +609,8 @@ footer.ft .w{display:block}
     <figcaption><i class="live"></i>Cape Town</figcaption>
    </figure>
    <div class="dd-body">
-    <span class="dd-k">Demo day · 22 April 2027 · Cape Town</span>
-    <h2 class="dd-h">The first autonomous drone that <b>talks to you when you're in trouble.</b></h2>
-    <p class="dd-sub">Free entry. First come, first served.</p>
+    <h2 class="dd-t">Reserve your spot</h2>
+    <p class="dd-s">First come, first served.</p>
     <form class="invite dd-form" id="invite" novalidate>
      <p class="inv-msg" id="inv-msg" role="status" aria-live="polite"></p>
      <div class="inv-row">
@@ -604,34 +627,17 @@ footer.ft .w{display:block}
 <div class="endbar"><i></i><i></i><i></i><i></i></div>
 <footer class="ft">
  <div class="w">
-  <div class="ft-top">
-   <div class="ft-brand">
-    <a class="ft-logo" href="#top" aria-label="Tambora, back to the top"><svg viewBox="22 34 156 142" aria-hidden="true"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><span>TAMBORA</span></a>
-    <p>Autonomy for essential services.<br>Built in Cape Town.</p>
-   </div>
-   <nav class="ft-cols" aria-label="Footer">
-    <div class="ft-col">
-     <h4>Demo day</h4>
-     <a href="#invite">Reserve my spot</a>
-     <span>22 April 2027 · Cape Town</span>
-     <span>Free entry</span>
-     <a href="https://wa.me/?text=Going%20to%20this%20event%20to%20check%20out%20Africa%27s%20first%20talking%20drone.%20Keen%20to%20come%20with%3F%20https%3A//flytambora.com" target="_blank" rel="noopener">Share on WhatsApp</a>
-    </div>
-    <div class="ft-col">
-     <h4>Tambora</h4>
-     <button type="button" data-dlg="lm" aria-haspopup="dialog" aria-controls="lm">Meet the founders</button>
-     <button type="button" data-dlg="sg" aria-haspopup="dialog" aria-controls="sg">Our Security Engine</button>
-     <a href="https://sagwic.com" target="_blank" rel="noopener">Sagwic, our AI lab</a>
-    </div>
-    <div class="ft-col">
-     <h4>Contact</h4>
-     <a href="mailto:hello@flytambora.com">hello@flytambora.com</a>
-     <a href="privacy.html">Privacy notice</a>
-     <a href="privacy.html#remove">Remove my number</a>
-    </div>
-   </nav>
-  </div>
-  <div class="ft-bot"><span>© 2026 Tambora Technologies (Pty) Ltd · South Africa</span><span>flytambora.com</span></div>
+  <nav class="ft-row" aria-label="Footer">
+   <a class="ft-logo" href="#top" aria-label="Tambora, back to the top"><svg viewBox="22 34 156 142" aria-hidden="true"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><span>TAMBORA</span></a>
+   <a href="#invite">Reserve my spot</a>
+   <button type="button" data-dlg="hw" aria-haspopup="dialog" aria-controls="hw">How it works</button>
+   <button type="button" data-dlg="lm" aria-haspopup="dialog" aria-controls="lm">Meet the founders</button>
+   <button type="button" data-dlg="sg" aria-haspopup="dialog" aria-controls="sg">Our Security Engine</button>
+   <a href="https://sagwic.com" target="_blank" rel="noopener">Sagwic</a>
+   <a href="mailto:hello@flytambora.com">hello@flytambora.com</a>
+   <a href="privacy.html">Privacy</a>
+  </nav>
+  <div class="ft-bot"><span>© 2026 Tambora Technologies (Pty) Ltd · South Africa</span></div>
  </div>
 </footer>
 <script>

@@ -110,6 +110,38 @@ background-image:linear-gradient(#211D33 1px,transparent 1px),linear-gradient(90
 .follow div.t b{font-weight:500}
 
 @media (max-width:560px){.closer{background:#03060B!important}.closer picture{height:150vw!important}.closer picture img{object-position:50% 100%!important}.closer .closer-in{position:relative;margin-top:-96px}}
+
+/* lean machine */
+.lm-open{background:none;border:0;padding:6px 12px;margin:-6px -12px;border-radius:999px;font:inherit;font-size:13px;letter-spacing:.06em;color:var(--mute);cursor:pointer;transition:background .25s,color .25s}
+.lm-open:hover,.lm-open:focus-visible{background:rgba(11,17,24,.06);color:var(--ink);outline:none}
+.lm-arr{display:inline-block;transition:transform .3s;animation:nudge 2.4s ease-in-out infinite}
+.lm-open:hover .lm-arr{transform:translateX(4px);animation:none}
+.lm{border:0;padding:0;margin:auto;width:min(820px,calc(100% - 32px));max-height:calc(100% - 48px);border-radius:16px;background:#F2EFE9;color:#0B1118;box-shadow:0 40px 120px rgba(11,17,24,.45);overflow:auto}
+.lm::backdrop{background:rgba(11,17,24,.62);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.lm[open]{animation:lmIn .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes lmIn{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:none}}
+.lm-in{padding:40px 44px 36px;position:relative}
+.lm-x{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;border:0;background:rgba(11,17,24,.06);font-size:20px;line-height:1;cursor:pointer;color:#0B1118}
+.lm-x:hover{background:rgba(11,17,24,.12)}
+.lm-k{font-size:13px;letter-spacing:.06em;color:var(--mute)}
+.lm h3{margin:8px 0 26px;font-size:clamp(28px,3.6vw,42px);font-weight:300;letter-spacing:-.03em;line-height:1.06}
+.lm h3 b{font-weight:500}
+.lm-photo{aspect-ratio:16/9;border-radius:10px;overflow:hidden;background:repeating-linear-gradient(135deg,#E6E1D8 0 14px,#ECE8E0 14px 28px);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:#8C8578;font-size:13px}
+.lm-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.lm-photo svg{width:84px;height:auto;opacity:.6}
+.lm-split{display:grid;grid-template-columns:1fr auto 1fr;gap:28px;margin-top:28px;align-items:start}
+.lm-split .mid{display:flex;flex-direction:column;align-items:center;gap:6px;padding-top:4px}
+.lm-split .mid svg{width:30px;height:28px}
+.lm-split .mid i{width:1px;height:96px;background:#D9D3C8}
+.lm-col h4{margin:0;font-size:clamp(40px,5vw,60px);font-weight:300;letter-spacing:-.04em;line-height:1}
+.lm-col h4 b{font-weight:600}
+.lm-col.tech h4 b{color:#2457A6}.lm-col.talk h4 b{color:#7C5CFF}
+.lm-col .nm{margin-top:12px;font-size:14px;font-weight:600}
+.lm-col .ro{font-size:12.5px;color:var(--mute);margin-top:2px}
+.lm-col p{margin:12px 0 0;font-size:15px;line-height:1.55;color:#3A3D42}
+.lm-col.talk{text-align:right}
+@media (max-width:560px){.lm{width:100%;max-width:none;max-height:none;height:100%;border-radius:0}.lm-in{padding:56px 20px 32px}.lm-split{grid-template-columns:1fr 1fr;gap:18px}.lm-split .mid{display:none}.lm-col.talk{text-align:left}.lm-col p{font-size:14px}}
+@media (prefers-reduced-motion:reduce){.lm[open]{animation:none}.lm-arr{animation:none}}
 /* tesla-style hero */
 html{scroll-behavior:smooth}
 .tz{position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden;padding:0}
@@ -354,7 +386,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <section class="pn paper">
  <div class="w pn-in">
-  <span class="pn-lbl rv">Autonomy</span>
+  <button class="pn-lbl lm-open rv" type="button" aria-haspopup="dialog" aria-controls="lm">The Lean Machine <span class="lm-arr" aria-hidden="true">→</span></button>
   <h2 class="rv">Reads the ground.</h2>
   <div class="scan pn-img wide rv" aria-hidden="true">
    <i class="sweep"></i>
@@ -471,6 +503,41 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
    f.classList.add('done');var cl=f.closest('.closer');if(cl)cl.classList.add('signed');try{localStorage.setItem('tb_invite','1')}catch(e){}msg('You\'re on the list, '+name.split(' ')[0]+'. We\'ll send your invite in January.');
   }).catch(function(){b.disabled=false;msg('That didn\'t go through. Check your connection and try again.',1)});
  });
+})();
+</script>
+
+<dialog class="lm" id="lm" aria-labelledby="lm-t">
+ <div class="lm-in">
+  <button class="lm-x" type="button" aria-label="Close">×</button>
+  <span class="lm-k">The Lean Machine</span>
+  <h3 id="lm-t">The co-founders behind<br><b>the Tambora mission.</b></h3>
+  <div class="lm-photo">
+   <!-- replace with: <img src="img/founders.jpg" alt="Ben Hendrikse and Tumelo Mokoena"> -->
+   <svg viewBox="0 0 84 40" aria-hidden="true"><circle cx="24" cy="12" r="8" fill="#B9B1A3"/><path d="M8 40c0-10 7-16 16-16s16 6 16 16z" fill="#B9B1A3"/><circle cx="60" cy="12" r="8" fill="#B9B1A3"/><path d="M44 40c0-10 7-16 16-16s16 6 16 16z" fill="#B9B1A3"/></svg>
+   <span>Photo of Ben and Tumelo coming soon</span>
+  </div>
+  <div class="lm-split">
+   <div class="lm-col tech">
+    <h4><b>T</b>ech</h4>
+    <div class="nm">Tumelo Mokoena</div><div class="ro">Co-founder</div>
+    <p>Director of Safeguard. Builds the security drones that fly for Safeguard and Tambora.</p>
+   </div>
+   <div class="mid" aria-hidden="true"><svg viewBox="22 34 156 142"><path fill="#0B1118" d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><i></i></div>
+   <div class="lm-col talk">
+    <h4><b>T</b>alk</h4>
+    <div class="nm">Ben Hendrikse</div><div class="ro">Co-founder, CEO</div>
+    <p>Runs the company and tells the story. And honestly? He just loves drones.</p>
+   </div>
+  </div>
+ </div>
+</dialog>
+<script>
+(function(){var d=document.getElementById('lm');if(!d||!d.showModal)return;
+document.querySelectorAll('.lm-open').forEach(function(b){b.addEventListener('click',function(){d.showModal();document.body.style.overflow='hidden'})});
+function shut(){d.close()}
+d.addEventListener('close',function(){document.body.style.overflow=''});
+d.querySelector('.lm-x').addEventListener('click',shut);
+d.addEventListener('click',function(e){if(e.target===d)shut()});
 })();
 </script>
 </body>

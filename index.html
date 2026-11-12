@@ -155,10 +155,16 @@ html{scroll-behavior:smooth}
 .invite .btn.big{background:#fff;color:#0B1118;font-weight:600}
 .invite .btn.big:hover{background:#F2EFE9}
 .invite .btn.big[disabled]{opacity:.6;cursor:default}
+.inv-msg:empty{display:none}
+.invite:not(.done) .inv-msg{order:0}
+.inv-note{font-size:12px;color:#9AA6B2;margin:0}
+.invite.done .inv-note{display:none}
 .inv-msg{font-size:14px;color:#9EE6C1;min-height:1em}
 .inv-msg.err{color:#FF9C9C}
 .invite.done .inv-row,.invite.done .inv-ok{display:none}
-.invite.done .inv-msg{font-size:18px;color:#fff}
+.invite.done .inv-note{font-size:12px;color:#9AA6B2;margin:0}
+.invite.done .inv-note{display:none}
+.inv-msg{font-size:18px;color:#fff}
 @media (max-width:560px){.inv-row{grid-template-columns:1fr}.invite .btn.big{align-self:stretch}}
 .inv-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:4px}
 .inv-actions .btn2{width:auto;padding:13px 26px}
@@ -178,8 +184,13 @@ html{scroll-behavior:smooth}
 .closer.signed .closer-sub{display:none}
 .cs-h{display:block;color:#fff;font-size:clamp(34px,4.4vw,60px);font-weight:300;line-height:1.04;letter-spacing:-.035em}
 .cs-h b{font-weight:500}
+.closer:not(.signed) .closer-sub{margin-bottom:0;font-size:0;line-height:0}
+.cs-h,.cs-s{line-height:1.45}
+.cs-h{line-height:1.04}
 .cs-s{display:block;margin-top:14px;font-size:clamp(15px,1.4vw,17px);color:#D7DCE2}
-.invite.done .inv-msg{order:-1;margin-bottom:6px}
+.invite.done .inv-note{font-size:12px;color:#9AA6B2;margin:0}
+.invite.done .inv-note{display:none}
+.inv-msg{order:-1;margin-bottom:6px}
 .closer.signed .closer-line{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 .ph-shot{margin-top:56px}
@@ -400,14 +411,14 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  <picture><source srcset="img/night.webp" type="image/webp"><img src="img/night.jpg" alt="A Tambora aircraft on night patrol above city lights" width="1733" height="908" loading="lazy"></picture>
  <div class="closer-in w">
   <p class="closer-line rv">The first drone<br><b>that talks back.</b></p>
-  <p class="closer-sub"><span class="cs-h">Be there<br><b>when it speaks.</b></span><span class="cs-s">Free invites go out in January. Add your name to get one.</span></p>
+  <p class="closer-sub"><span class="cs-h">Drones don't talk.<br><b>Ours does.</b></span><span class="cs-s">Hear it first on 22 April. Free invites go out in January.</span></p>
   <form class="invite" id="invite" novalidate>
    <div class="inv-row">
-    <label class="inv-f"><span>Full name</span><input id="inv-name" name="name" autocomplete="name" required maxlength="80"></label>
+    <label class="inv-f"><span>Full name</span><input id="inv-name" name="name" autocomplete="name" placeholder="Name and surname" required maxlength="80"></label>
     <label class="inv-f"><span>Mobile number</span><input id="inv-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="082 123 4567" required maxlength="20"></label>
    </div>
-   <label class="inv-ok"><input id="inv-consent" type="checkbox" required> <span>I agree that Tambora may contact me about the demo day. We'll only use your number for this, and you can ask us to remove it at any time.</span></label>
-   <div class="inv-actions"><button class="btn big" type="submit">Reserve my spot</button><a class="btn2" href="#top">Back to the start</a></div>
+      <div class="inv-actions"><button class="btn big" type="submit">Reserve my spot</button><a class="btn2" href="#top">Back to the start</a></div>
+   <p class="inv-note">We'll only text you about the demo day. Ask us to remove your number any time.</p>
    <p class="inv-msg" id="inv-msg" role="status" aria-live="polite"></p>
   </form>
  </div>
@@ -446,16 +457,15 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  var f=document.getElementById('invite');if(!f)return;
  try{if(localStorage.getItem('tb_invite')){f.classList.add('done');var cl0=f.closest('.closer');if(cl0)cl0.classList.add('signed');document.getElementById('inv-msg').textContent='You\'re on the list. We\'ll send your invite in January.'}}catch(e){}
  document.querySelectorAll('a[href="#invite"]').forEach(function(a){a.addEventListener('click',function(){setTimeout(function(){document.getElementById('inv-name').focus({preventScroll:true})},700)})});
- var n=document.getElementById('inv-name'),p=document.getElementById('inv-phone'),c=document.getElementById('inv-consent'),m=document.getElementById('inv-msg'),b=f.querySelector('button');
+ var n=document.getElementById('inv-name'),p=document.getElementById('inv-phone'),m=document.getElementById('inv-msg'),b=f.querySelector('button');
  function msg(t,e){m.textContent=t;m.className='inv-msg'+(e?' err':'')}
  f.addEventListener('submit',function(ev){
   ev.preventDefault();n.classList.remove('bad');p.classList.remove('bad');
   var name=n.value.trim(),ph=p.value.replace(/[^0-9+]/g,'');
   if(name.split(/\s+/).length<2){n.classList.add('bad');return msg('Please enter your full name.',1)}
   if(!/^(\+?27|0)[6-8][0-9]{8}$/.test(ph)&&!/^\+[1-9][0-9]{7,14}$/.test(ph)){p.classList.add('bad');return msg('Please enter a valid mobile number, e.g. 082 123 4567.',1)}
-  if(!c.checked)return msg('Please tick the box so we can contact you.',1);
   b.disabled=true;msg('Adding you to the list…');
-  var d=new FormData();d.append('entry.1394393449',name);d.append('entry.2555204',ph);d.append('entry.1614850659','Yes');
+  var d=new FormData();d.append('entry.1394393449',name);d.append('entry.2555204',ph);d.append('entry.1614850659','Yes (by submitting)');
   fetch('https://docs.google.com/forms/d/e/1FAIpQLSf0Ejk1RYoVrohEpsW4PSeTVsEy1I2WBUvD8XTt9u8j2iIgfw/formResponse',{method:'POST',mode:'no-cors',body:d}).then(function(){
    f.classList.add('done');var cl=f.closest('.closer');if(cl)cl.classList.add('signed');try{localStorage.setItem('tb_invite','1')}catch(e){}msg('You\'re on the list, '+name.split(' ')[0]+'. We\'ll send your invite in January.');
   }).catch(function(){b.disabled=false;msg('That didn\'t go through. Check your connection and try again.',1)});

@@ -137,6 +137,52 @@ background-image:linear-gradient(#211D33 1px,transparent 1px),linear-gradient(90
 .closer .inv-actions .btn2{background:none;backdrop-filter:none;-webkit-backdrop-filter:none;color:#C9D0D6;padding:8px 0;font-size:13px;width:auto}
 .closer .inv-note{text-align:center;font-size:11.5px}
 }
+
+.night-band{position:relative;background:#03060B;overflow:hidden;padding:0!important}
+.night-band picture{display:block}
+.night-band img{width:100%;height:min(78vh,720px);object-fit:cover;object-position:62% 45%}
+.night-band::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,6,11,0) 60%,rgba(3,6,11,.6) 100%)}
+.nb-cap{position:absolute;left:max(32px,calc((100% - 1160px)/2 + 32px));bottom:26px;z-index:1;display:flex;align-items:center;gap:8px;color:#fff;font-size:13px;letter-spacing:.04em;font-weight:500}
+@media (max-width:560px){.night-band img{height:62vh;object-position:80% 40%}.nb-cap{left:20px;bottom:18px}}
+/* demo day + sign-up (redesign) */
+.dd{padding:96px 0;background:var(--paper)}
+.dd-card{display:grid;grid-template-columns:1.05fr 1fr;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(11,17,24,.10)}
+.dd-pic{position:relative;margin:0;min-height:100%}
+.dd-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.82) contrast(1.02)}
+.dd-pic::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,17,24,0) 55%,rgba(11,17,24,.55) 100%)}
+.dd-pic picture{position:absolute;inset:0}
+.dd-credit{position:absolute;right:16px;bottom:14px;z-index:1;font-size:10.5px;color:rgba(255,255,255,.7);letter-spacing:.02em}
+.dd-pic figcaption{position:absolute;left:24px;bottom:22px;z-index:1;display:flex;align-items:center;gap:8px;color:#fff;font-size:13px;letter-spacing:.04em;font-weight:500}
+.dd-body{padding:52px 52px 44px;display:flex;flex-direction:column}
+.dd-k{font-size:13px;letter-spacing:.06em;color:var(--mute)}
+.dd-h{margin:10px 0 12px;font-size:clamp(26px,2.6vw,34px);font-weight:300;letter-spacing:-.025em;line-height:1.15;text-wrap:balance}
+.dd-h b{font-weight:500}
+.dd-sub{color:var(--body);font-size:16px;line-height:1.55}
+.dd-hook{margin-top:18px;display:flex;gap:10px;align-items:baseline;font-size:14.5px;line-height:1.5;color:var(--body);background:#F6F4F0;border-radius:10px;padding:12px 14px}
+.dd-hook i{flex:none;width:8px;height:8px;border-radius:50%;background:var(--s4);transform:translateY(-1px)}
+.dd-hook b{color:#6A4DF0;font-weight:600}
+.dd .dd-form{display:flex;flex-direction:column;gap:12px;margin-top:28px}
+.dd .inv-row{display:grid;grid-template-columns:1fr;gap:12px}
+.dd .inv-f{display:flex;flex-direction:column;gap:6px}
+.dd .inv-f span{font-size:13px;font-weight:500;color:var(--ink)}
+.dd .inv-f input{font:inherit;font-size:16px;padding:13px 14px;border:1px solid #D9D4CB;border-radius:10px;background:#fff;color:var(--ink);width:100%;transition:border-color .2s,box-shadow .2s}
+.dd .inv-f input::placeholder{color:#B3ACA0}
+.dd .inv-f input:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(11,17,24,.08)}
+.dd .inv-f input.bad{border-color:#D14343;box-shadow:0 0 0 3px rgba(209,67,67,.12)}
+.dd .inv-actions{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.dd .invite .inv-actions .btn.big{align-self:stretch;width:100%;max-width:none;justify-content:center;background:var(--ink);color:#fff;border:0;border-radius:10px;padding:15px 0 18px;font:inherit;font-size:15.5px;font-weight:600;cursor:pointer}
+.dd .invite .inv-actions .btn.big:hover{background:#1A2430;transform:translateY(-1px);box-shadow:0 10px 24px rgba(11,17,24,.18)}
+.dd .invite .inv-actions .btn.big:disabled{opacity:.6;cursor:default;transform:none;box-shadow:none}
+.dd .inv-note{font-size:12.5px;color:var(--mute);line-height:1.5;text-align:left}
+.dd .inv-note a{color:var(--body)}
+.dd .inv-msg{order:0;margin:0;font-size:14px;color:var(--body)}
+.dd .inv-msg.err{color:#B23A3A}
+.dd .inv-msg:empty{display:none}
+.dd .invite.done .inv-row,.dd .invite.done .inv-actions .btn.big,.dd .invite.done .inv-note{display:none}
+.dd .invite.done .inv-msg{font-size:17px;line-height:1.5;color:var(--ink);background:#EEF8F2;border-radius:10px;padding:16px 18px}
+.dd .invite.done .wa-btn{max-width:none;border-radius:10px}
+@media (max-width:900px){.dd{padding:64px 0}.dd-card{grid-template-columns:1fr}.dd-pic{min-height:0;aspect-ratio:16/10}.dd-body{padding:32px 26px 30px}}
+@media (max-width:560px){.dd{padding:40px 0}.dd .w{padding:0 12px}.dd-card{border-radius:16px}.dd-pic{aspect-ratio:4/3}.dd-pic figcaption{left:18px;bottom:16px}.dd-body{padding:28px 20px 26px}}
 /* lean machine */
 .pn-lbl.lm-open{background:none;border:1px solid rgba(11,17,24,.16);padding:8px 16px;margin:-4px 0 0;border-radius:999px;font:inherit;font-size:15px;font-weight:500;letter-spacing:.04em;color:#5A6470;cursor:pointer;transition:background .25s,color .25s}
 .pn-lbl.lm-open:hover,.pn-lbl.lm-open:focus-visible{background:rgba(11,17,24,.06);color:var(--ink);outline:none}
@@ -493,6 +539,11 @@ footer.ft .w{display:block}
  </div>
 </section>
 
+<section class="night-band" aria-label="Night patrol">
+ <picture><source media="(max-width:560px)" srcset="img/night-m2.webp" type="image/webp"><source media="(max-width:560px)" srcset="img/night-m2.jpg"><source srcset="img/night.webp" type="image/webp"><img src="img/night.jpg" alt="A Tambora aircraft on night patrol above city lights" width="1733" height="908" loading="lazy"></picture>
+ <span class="nb-cap"><i class="live"></i>On patrol, day and night</span>
+</section>
+
 <section class="lab" id="lab">
  <div class="w lab-in">
   <div>
@@ -508,30 +559,29 @@ footer.ft .w{display:block}
  </div>
 </section>
 
-<section class="pn paper" id="demo">
- <div class="w pn-in">
-  <span class="pn-lbl rv"><i class="live"></i>Demo day</span>
-  <h2 class="rv">22 April 2027.<br>Cape Town.</h2>
-  <span class="pn-sub rv">Open to everyone. Free entry.<br>Limited spots, so sign up below.</span>
-  <span class="pn-hook rv"><i></i><span>Live reveal: the first drone that talks back when you speak to it. <b style="color:#A994FF;font-weight:600">Powered by Sagwic.</b></span></span>
-  <a class="wa-link rv" href="https://wa.me/?text=I%27m%20going%20to%20Tambora%27s%20demo%20day%3A%20have%20a%20conversation%20with%20a%20drone.%20Free%20entry%2C%20Cape%20Town%2C%2022%20April%202027.%20Reserve%20a%20spot%3A%20https%3A//flytambora.com" target="_blank" rel="noopener"><svg class="wa-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span>Bringing someone? Share it on WhatsApp</span></a>
- </div>
-</section>
-
-<section class="closer" id="closer">
- <picture><source media="(max-width:560px)" srcset="img/night-m2.webp" type="image/webp"><source media="(max-width:560px)" srcset="img/night-m2.jpg"><source srcset="img/night.webp" type="image/webp"><img src="img/night.jpg" alt="A Tambora aircraft on night patrol above city lights" width="1733" height="908" loading="lazy"></picture>
- <div class="closer-in w">
-  <p class="closer-line rv">You're in.<br><b>See you on 22 April 2027.</b></p>
-  <p class="closer-sub"><span class="cs-h">Drones don't talk.<br><b>Ours does.</b></span><span class="cs-s">Have a conversation with a drone on 22 April 2027. Free invites go out in January.</span></p>
-  <form class="invite" id="invite" novalidate>
-   <div class="inv-row">
-    <label class="inv-f"><span>Full name</span><input id="inv-name" name="name" autocomplete="name" placeholder="Full name" required maxlength="80"></label>
-    <label class="inv-f"><span>Mobile number</span><input id="inv-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="082 123 4567" required maxlength="20"></label>
+<section class="dd" id="demo">
+ <div class="w">
+  <div class="dd-card">
+   <figure class="dd-pic">
+    <picture><source srcset="img/capetown.webp" type="image/webp"><img src="img/capetown.jpg" alt="Cape Town from the air, with Table Mountain behind the city" width="740" height="416" loading="lazy"></picture>
+    <figcaption><i class="live"></i>Cape Town</figcaption>
+    <span class="dd-credit">Image: Freepik</span>
+   </figure>
+   <div class="dd-body">
+    <span class="dd-k">Demo day · 22 April 2027 · Cape Town</span>
+    <h2 class="dd-h">The first autonomous drone that <b>talks to you when you're in trouble.</b></h2>
+    <p class="dd-sub">Free entry. First come, first served.</p>
+    <form class="invite dd-form" id="invite" novalidate>
+     <p class="inv-msg" id="inv-msg" role="status" aria-live="polite"></p>
+     <div class="inv-row">
+      <label class="inv-f"><span>Full name</span><input id="inv-name" name="name" autocomplete="name" placeholder="e.g. Thandi Nkosi" required maxlength="80"></label>
+      <label class="inv-f"><span>Mobile number</span><input id="inv-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="082 123 4567" required maxlength="20"></label>
+     </div>
+     <div class="inv-actions"><button class="btn big" type="submit">Reserve my spot</button><a class="wa-btn" href="https://wa.me/?text=I%27m%20going%20to%20Tambora%27s%20demo%20day%3A%20have%20a%20conversation%20with%20a%20drone.%20Free%20entry%2C%20Cape%20Town%2C%2022%20April%202027.%20Reserve%20a%20spot%3A%20https%3A//flytambora.com" target="_blank" rel="noopener"><svg class="wa-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span>Share on WhatsApp</span></a></div>
+     <p class="inv-note">We'll only text you about demo day. Free invites go out in January. <a href="privacy.html">Privacy notice</a></p>
+    </form>
    </div>
-      <div class="inv-actions"><button class="btn big" type="submit">Reserve my spot</button><a class="wa-btn" href="https://wa.me/?text=I%27m%20going%20to%20Tambora%27s%20demo%20day%3A%20have%20a%20conversation%20with%20a%20drone.%20Free%20entry%2C%20Cape%20Town%2C%2022%20April%202027.%20Reserve%20a%20spot%3A%20https%3A//flytambora.com" target="_blank" rel="noopener"><svg class="wa-i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg><span>Share on WhatsApp</span></a><a class="btn2" href="#top">Back to the start</a></div>
-   <p class="inv-note">We'll only text you about the demo day. Ask us to remove your number any time. <a href="privacy.html">Privacy notice</a></p>
-   <p class="inv-msg" id="inv-msg" role="status" aria-live="polite"></p>
-  </form>
+  </div>
  </div>
 </section>
 <div class="endbar"><i></i><i></i><i></i><i></i></div>

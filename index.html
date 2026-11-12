@@ -197,11 +197,6 @@ background-image:linear-gradient(#211D33 1px,transparent 1px),linear-gradient(90
 .sg-go{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:#1A3A72;color:#fff;text-decoration:none;font-size:14px;font-weight:600;transition:transform .25s,background .25s}
 .sg-go:hover{background:#0F2A57;transform:translateY(-1px)}
 @media (max-width:560px){.sg-logo{height:46px;margin-bottom:18px}.sg-lead{font-size:15px}.sg-steps{grid-template-columns:1fr;gap:10px;margin-top:20px}.sg-steps div{border-top-width:1px;padding-top:9px}.sg-steps .n{display:none}.sg-steps h4{margin:0;font-size:16px}.sg-steps p{margin-top:2px;font-size:13.5px}.sg-foot{margin-top:20px}.sg-foot{flex-direction:column;align-items:flex-start}.sg-go{width:100%;justify-content:center}}
-.tz-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 45%;z-index:0}
-.tz-ai{position:absolute;right:16px;bottom:12px;z-index:2;font-size:11px;letter-spacing:.04em;color:rgba(255,255,255,.75);text-shadow:0 1px 3px rgba(0,0,0,.45)}
-@media (max-width:560px){.tz-vid{object-position:44% 50%}}
-@media (prefers-reduced-motion:reduce){.tz-vid{display:none}}
-.tz-head,.tz-title,.tz-cta{z-index:2}
 /* tesla-style hero */
 html{scroll-behavior:smooth}
 .tz{position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden;padding:0}
@@ -409,8 +404,6 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <section class="tz" id="top">
  <picture><source srcset="img/hero.webp" type="image/webp"><img src="img/hero.jpg" alt="Two Tambora aircraft flying low over a mountain ridge at dusk" width="1733" height="908" fetchpriority="high"></picture>
- <video class="tz-vid" autoplay muted loop playsinline preload="auto" poster="img/hero-poster.jpg" aria-hidden="true"><source src="img/hero-loop.mp4" type="video/mp4"></video>
- <span class="tz-ai">AI-generated concept footage</span>
  <div class="w tz-head">
   <header>
    <a class="logo" href="/" aria-label="Tambora">

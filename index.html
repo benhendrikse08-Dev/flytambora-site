@@ -367,6 +367,21 @@ html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.phase::before,.statement .bar i{transform:none}}
 footer{border-top:1px solid var(--rule);padding:28px 0 40px;font-size:13px;color:var(--mute)}
 footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer.ft{background:#fff;border-top:0;padding:64px 0 32px;font-size:14px;color:var(--body)}
+footer.ft .w{display:block}
+.ft-top{display:grid;grid-template-columns:1.1fr 2fr;gap:48px;align-items:start}
+.ft-logo{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);font-weight:600;letter-spacing:.12em;font-size:15px}
+.ft-logo svg{height:20px;width:auto;fill:var(--ink)}
+.ft-brand p{margin-top:14px;color:var(--mute);line-height:1.55}
+.ft-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.ft-col{display:flex;flex-direction:column;gap:9px;align-items:flex-start}
+.ft-col h4{font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:4px}
+.ft-col a,.ft-col button{color:var(--ink);text-decoration:none;background:none;border:0;padding:0;font:inherit;cursor:pointer;text-align:left}
+.ft-col a:hover,.ft-col button:hover,.ft-col a:focus-visible,.ft-col button:focus-visible{text-decoration:underline;text-underline-offset:3px;outline:none}
+.ft-col span{color:var(--mute)}
+.ft-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:56px;padding-top:20px;border-top:1px solid #ECE8E1;font-size:12.5px;color:var(--mute)}
+@media (max-width:900px){.ft-top{grid-template-columns:1fr;gap:36px}}
+@media (max-width:560px){footer.ft{padding:48px 0 28px}.ft-cols{grid-template-columns:1fr 1fr;gap:28px 20px}.ft-cols .ft-col:first-child{grid-column:1/-1}.ft-bot{margin-top:40px;flex-direction:column;gap:4px}}
 
 @media (max-width:900px){
  .tz header nav{display:none}
@@ -441,7 +456,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <section class="pn paper">
  <div class="w pn-in">
-  <button class="pn-lbl lm-open rv" type="button" data-dlg="lm" aria-haspopup="dialog" aria-controls="lm">The Lean Machine <span class="lm-arr" aria-hidden="true">→</span></button>
+  <button class="pn-lbl lm-open rv" type="button" data-dlg="lm" aria-haspopup="dialog" aria-controls="lm">Meet the founders <span class="lm-arr" aria-hidden="true">→</span></button>
   <h2 class="rv">Reads the ground.</h2>
   <div class="scan pn-img wide rv" aria-hidden="true">
    <i class="sweep"></i>
@@ -507,13 +522,42 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <label class="inv-f"><span>Mobile number</span><input id="inv-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="082 123 4567" required maxlength="20"></label>
    </div>
       <div class="inv-actions"><button class="btn big" type="submit">Reserve my spot</button><a class="btn2" href="#top">Back to the start</a></div>
-   <p class="inv-note">We'll only text you about the demo day. Ask us to remove your number any time.</p>
+   <p class="inv-note">We'll only text you about the demo day. Ask us to remove your number any time. <a href="privacy.html">Privacy notice</a></p>
    <p class="inv-msg" id="inv-msg" role="status" aria-live="polite"></p>
   </form>
  </div>
 </section>
 <div class="endbar"><i></i><i></i><i></i><i></i></div>
-<footer><div class="w"><span>Tambora Technologies (Pty) Ltd · South Africa</span><span>flytambora.com</span></div></footer>
+<footer class="ft">
+ <div class="w">
+  <div class="ft-top">
+   <div class="ft-brand">
+    <a class="ft-logo" href="#top" aria-label="Tambora, back to the top"><svg viewBox="22 34 156 142" aria-hidden="true"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><span>TAMBORA</span></a>
+    <p>Autonomy for essential services.<br>Built in Cape Town.</p>
+   </div>
+   <nav class="ft-cols" aria-label="Footer">
+    <div class="ft-col">
+     <h4>Demo day</h4>
+     <a href="#invite">Reserve my spot</a>
+     <span>22 April 2027 · Cape Town</span>
+     <span>Free entry</span>
+    </div>
+    <div class="ft-col">
+     <h4>Tambora</h4>
+     <button type="button" data-dlg="lm" aria-haspopup="dialog" aria-controls="lm">Meet the founders</button>
+     <button type="button" data-dlg="sg" aria-haspopup="dialog" aria-controls="sg">Our Security Engine</button>
+     <a href="https://sagwic.com" target="_blank" rel="noopener">Sagwic, our AI lab</a>
+    </div>
+    <div class="ft-col">
+     <h4>Your details</h4>
+     <a href="privacy.html">Privacy notice</a>
+     <a href="privacy.html#remove">Remove my number</a>
+    </div>
+   </nav>
+  </div>
+  <div class="ft-bot"><span>© 2026 Tambora Technologies (Pty) Ltd · South Africa</span><span>flytambora.com</span></div>
+ </div>
+</footer>
 <script>
 (function(){
  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.18});
@@ -583,7 +627,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <dialog class="lm" id="lm" aria-labelledby="lm-t">
  <div class="lm-in">
   <button class="lm-x" type="button" aria-label="Close">×</button>
-  <span class="lm-k">The Lean Machine</span>
+  <span class="lm-k">The founders</span>
   <h3 id="lm-t">The co-founders behind<br><b>the Tambora mission.</b></h3>
   <div class="lm-photo">
    <!-- replace with: <img src="img/founders.jpg" alt="Ben Hendrikse and Tumelo Mokoena"> -->

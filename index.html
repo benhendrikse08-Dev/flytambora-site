@@ -106,6 +106,41 @@ background-image:linear-gradient(#211D33 1px,transparent 1px),linear-gradient(90
 .follow div.t{font-size:22px;font-weight:300;line-height:1.25;margin-top:18px}
 .follow div.t b{font-weight:500}
 
+/* --- life --- */
+.logo .stripe i{transform-origin:left;animation:grow .7s cubic-bezier(.2,.7,.2,1) both}
+.logo .stripe i:nth-child(2){animation-delay:.12s}.logo .stripe i:nth-child(3){animation-delay:.24s}.logo .stripe i:nth-child(4){animation-delay:.36s}
+@keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.craft picture{animation:hover 6s ease-in-out infinite}
+.craft .shadow{animation:shadow 6s ease-in-out infinite}
+@keyframes hover{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes shadow{0%,100%{transform:scaleX(1);opacity:1}50%{transform:scaleX(.9);opacity:.7}}
+.statement{background:var(--ink);color:var(--paper);padding:120px 0 110px}
+.statement p{color:var(--paper);font-size:clamp(34px,5.4vw,72px);font-weight:300;line-height:1.04;letter-spacing:-.035em;max-width:1000px}
+.statement p b{font-weight:500}
+.statement .bar{display:flex;gap:4px;height:8px;width:min(320px,60%);margin-top:48px}
+.statement .bar i{flex:1;transform:scaleX(0);transform-origin:left;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.statement .bar i:nth-child(1){background:var(--s1)}.statement .bar i:nth-child(2){background:var(--s2);transition-delay:.12s}.statement .bar i:nth-child(3){background:var(--s3);transition-delay:.24s}.statement .bar i:nth-child(4){background:var(--s4);transition-delay:.36s}
+.statement.in .bar i{transform:scaleX(1)}
+.phase .n{transition:color .8s}
+.phase.in:nth-child(1) .n{color:var(--s1)}.phase.in:nth-child(2) .n{color:var(--s2)}.phase.in:nth-child(3) .n{color:#D9A300}
+.phase{border-top-width:0;position:relative}
+.phase::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;transform:scaleX(0);transform-origin:left;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.phase:nth-child(1)::before{background:var(--s1)}.phase:nth-child(2)::before{background:var(--s2)}.phase:nth-child(3)::before{background:var(--s3)}
+.phase.in::before{transform:scaleX(1)}
+.phase:nth-child(2)::before{transition-delay:.15s}.phase:nth-child(3)::before{transition-delay:.3s}
+.st.on::first-letter{color:var(--s1)}
+.live{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--s2);margin-right:7px;box-shadow:0 0 0 0 rgba(30,148,97,.5);animation:pulse 2.2s infinite;vertical-align:1px}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(30,148,97,.45)}70%{box-shadow:0 0 0 10px rgba(30,148,97,0)}100%{box-shadow:0 0 0 0 rgba(30,148,97,0)}}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.circle{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.circle:hover{transform:rotate(-4deg) scale(1.02)}
+.pupil{transition:transform .12s linear}
+.shot{transition:transform .6s}
+.shot:hover{transform:rotate(0) scale(1.01)}
+.endbar{display:flex;height:10px}.endbar i{flex:1}
+.endbar i:nth-child(1){background:var(--s1)}.endbar i:nth-child(2){background:var(--s2)}.endbar i:nth-child(3){background:var(--s3)}.endbar i:nth-child(4){background:var(--s4)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.phase::before,.statement .bar i{transform:none}}
 footer{border-top:1px solid var(--rule);padding:28px 0 40px;font-size:13px;color:var(--mute)}
 footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
@@ -163,6 +198,10 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </div>
 </div>
 
+<section class="statement">
+ <div class="w"><p class="rv">Most autonomy is built for consumers. <b>Ours is built for the services that protect them.</b></p><div class="bar"><i></i><i></i><i></i><i></i></div></div>
+</section>
+
 <section>
  <div class="w one">
   <div>
@@ -170,9 +209,8 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
    <h2>One company.<br><b>Built in increments.</b></h2>
    <p>Tambora is the parent company. It owns the technology, the AI and the team.</p>
    <p>Every step of the business runs on the same aircraft, docks and software, so each new mission starts with everything the last one proved.</p>
-   <div class="quote">Most autonomy is built for consumers. <b>Ours is built for the services that protect them.</b></div>
   </div>
-  <figure class="shot">
+  <figure class="shot rv">
    <picture><source srcset="img/live-view.webp" type="image/webp"><img src="img/live-view.jpg" alt="Operator's view from a Tambora aircraft over Stellenbosch at dusk" width="1536" height="1024" loading="lazy"></picture>
    <figcaption class="cap">Concept: the operator's view on a phase one patrol, Stellenbosch at dusk.</figcaption>
   </figure>
@@ -181,16 +219,16 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 <section style="padding-top:24px">
  <div class="w">
-  <div class="ph-head">
+  <div class="ph-head rv">
    <div><div class="kicker">The phases</div><h2>From simple<br><b>to complex.</b></h2></div>
    <p style="max-width:440px">We start with the simplest aircraft and the simplest job, then move up one step at a time. Each version flies before the next one is built.</p>
   </div>
   <div class="phases">
-   <div class="phase"><div class="n">01</div><h3>Security</h3><div class="st on">● In action now</div><p>Drones launch from docks on site, patrol day and night, and alert response teams quickly.</p></div>
+   <div class="phase"><div class="n">01</div><h3>Security</h3><div class="st on"><span class="live"></span>In action now</div><p>Drones launch from docks on site, patrol day and night, and alert response teams quickly.</p></div>
    <div class="phase"><div class="n">02</div><h3>Medical</h3><div class="st">Next</div><p>Heavy-load delivery of blood, medicine and equipment between hospitals and clinics.</p></div>
    <div class="phase"><div class="n">03</div><h3>Firefighting</h3><div class="st">Later</div><p>Heavy-lift aircraft that help detect, map and fight wildfires.</p></div>
   </div>
-  <div class="after">And after that: heavy-load aviation, and one day, vehicles that fly.</div>
+  <div class="after rv">And after that: heavy-load aviation, and one day, vehicles that fly.</div>
  </div>
 </section>
 
@@ -209,7 +247,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
    <div class="launch"><b>sagwic.com</b> launches at the end of January 2027.</div>
   </div>
   <div class="circle" role="img" aria-label="Sagwic">
-   <svg viewBox="0 0 120 50"><circle cx="28" cy="25" r="20" fill="none" stroke="#fff" stroke-width="6"/><circle cx="92" cy="25" r="20" fill="none" stroke="#fff" stroke-width="6"/><path d="M48 22 Q60 12 72 22" fill="none" stroke="#fff" stroke-width="6"/><circle cx="25" cy="18" r="5.5" fill="#121216"/><circle cx="89" cy="18" r="5.5" fill="#121216"/></svg>
+   <svg viewBox="0 0 120 50"><circle cx="28" cy="25" r="20" fill="none" stroke="#fff" stroke-width="6"/><circle cx="92" cy="25" r="20" fill="none" stroke="#fff" stroke-width="6"/><path d="M48 22 Q60 12 72 22" fill="none" stroke="#fff" stroke-width="6"/><circle class="pupil" cx="28" cy="25" r="5.5" fill="#121216" transform="translate(-3 -7)"/><circle class="pupil" cx="92" cy="25" r="5.5" fill="#121216" transform="translate(-3 -7)"/></svg>
    <span>sagwic</span>
   </div>
  </div>
@@ -227,14 +265,27 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
    </div>
   </div>
   <div>
-   <div class="ms"><div class="d on">2026</div><div><h3>Building the first autonomous MVPs</h3><p>The first aircraft, dock and AI working together, in security.</p></div></div>
-   <div class="ms"><div class="d">End of 2026</div><div><h3>The full flytambora.com launches</h3><p>The complete story: the company, the platform and every phase.</p></div></div>
-   <div class="ms"><div class="d">January 2027</div><div><h3>First advisory board finalised</h3><p>Advisors in place for the next stage of growth.</p></div></div>
-   <div class="ms"><div class="d">2027</div><div><h3>Software first, early hardware tests</h3><p>Mainly AI and platform development, with hardware trials alongside.</p></div></div>
+   <div class="ms rv"><div class="d on"><span class="live"></span>2026</div><div><h3>Building the first autonomous MVPs</h3><p>The first aircraft, dock and AI working together, in security.</p></div></div>
+   <div class="ms rv"><div class="d">End of 2026</div><div><h3>The full flytambora.com launches</h3><p>The complete story: the company, the platform and every phase.</p></div></div>
+   <div class="ms rv"><div class="d">January 2027</div><div><h3>First advisory board finalised</h3><p>Advisors in place for the next stage of growth.</p></div></div>
+   <div class="ms rv"><div class="d">2027</div><div><h3>Software first, early hardware tests</h3><p>Mainly AI and platform development, with hardware trials alongside.</p></div></div>
   </div>
  </div>
 </section>
 
+<div class="endbar"><i></i><i></i><i></i><i></i></div>
 <footer><div class="w"><span>Tambora Technologies (Pty) Ltd · South Africa</span><span>flytambora.com</span></div></footer>
+<script>
+(function(){
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.18});
+ document.querySelectorAll('.rv,.phase,.statement').forEach(function(el){io.observe(el)});
+ var c=document.querySelector('.circle'),ps=document.querySelectorAll('.pupil');
+ if(!c||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ function look(x,y){var r=c.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height*.4,dx=x-cx,dy=y-cy,d=Math.hypot(dx,dy)||1,m=Math.min(8,d/25);
+  ps.forEach(function(p){p.setAttribute('transform','translate('+(dx/d*m).toFixed(2)+' '+(dy/d*m).toFixed(2)+')')})}
+ addEventListener('mousemove',function(e){look(e.clientX,e.clientY)},{passive:true});
+ if(matchMedia('(hover: none)').matches){var t=0;setInterval(function(){t+=1;var r=c.getBoundingClientRect();look(r.left+r.width/2+Math.cos(t/2)*300,r.top+Math.sin(t/3)*200-150)},1400)}
+})();
+</script>
 </body>
 </html>

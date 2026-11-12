@@ -173,6 +173,12 @@ html{scroll-behavior:smooth}
 @keyframes nudge{0%,70%,100%{transform:translateX(0)}80%{transform:translateX(5px)}90%{transform:translateX(0)}}
 .btn.hero-cta:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 16px 40px rgba(11,17,24,.45)}
 .btn.hero-cta:hover .arr{transform:translateX(5px);animation:none}
+.closer:not(.signed) .closer-line{display:none}
+.closer:not(.signed) .closer-sub{font-size:clamp(20px,2.2vw,26px);line-height:1.45;margin-top:0;color:#E6EAEE;max-width:600px}
+.closer.signed .closer-sub{display:none}
+.invite.done .inv-msg{order:-1;margin-bottom:6px}
+.closer.signed .closer-line{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 /* --- life --- */
 .logo .stripe i{transform-origin:left;animation:grow .7s cubic-bezier(.2,.7,.2,1) both}
 .logo .stripe i:nth-child(2){animation-delay:.12s}.logo .stripe i:nth-child(3){animation-delay:.24s}.logo .stripe i:nth-child(4){animation-delay:.36s}
@@ -415,6 +421,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <script>
 (function(){
  var f=document.getElementById('invite');if(!f)return;
+ try{if(localStorage.getItem('tb_invite')){f.classList.add('done');var cl0=f.closest('.closer');if(cl0)cl0.classList.add('signed');document.getElementById('inv-msg').textContent='You\'re on the list. We\'ll send your invite in January.'}}catch(e){}
  document.querySelectorAll('a[href="#invite"]').forEach(function(a){a.addEventListener('click',function(){setTimeout(function(){document.getElementById('inv-name').focus({preventScroll:true})},700)})});
  var n=document.getElementById('inv-name'),p=document.getElementById('inv-phone'),c=document.getElementById('inv-consent'),m=document.getElementById('inv-msg'),b=f.querySelector('button');
  function msg(t,e){m.textContent=t;m.className='inv-msg'+(e?' err':'')}
@@ -427,7 +434,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   b.disabled=true;msg('Adding you to the list…');
   var d=new FormData();d.append('entry.1394393449',name);d.append('entry.2555204',ph);d.append('entry.1614850659','Yes');
   fetch('https://docs.google.com/forms/d/e/1FAIpQLSf0Ejk1RYoVrohEpsW4PSeTVsEy1I2WBUvD8XTt9u8j2iIgfw/formResponse',{method:'POST',mode:'no-cors',body:d}).then(function(){
-   f.classList.add('done');msg('You\'re on the list, '+name.split(' ')[0]+'. We\'ll send your invite in January.');
+   f.classList.add('done');var cl=f.closest('.closer');if(cl)cl.classList.add('signed');try{localStorage.setItem('tb_invite','1')}catch(e){}msg('You\'re on the list, '+name.split(' ')[0]+'. We\'ll send your invite in January.');
   }).catch(function(){b.disabled=false;msg('That didn\'t go through. Check your connection and try again.',1)});
  });
 })();

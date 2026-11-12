@@ -156,9 +156,15 @@ html{scroll-behavior:smooth}
 .invite .btn.big[disabled]{opacity:.6;cursor:default}
 .inv-msg{font-size:14px;color:#9EE6C1;min-height:1em}
 .inv-msg.err{color:#FF9C9C}
-.invite.done .inv-row,.invite.done .inv-ok,.invite.done button{display:none}
+.invite.done .inv-row,.invite.done .inv-ok{display:none}
 .invite.done .inv-msg{font-size:18px;color:#fff}
 @media (max-width:560px){.inv-row{grid-template-columns:1fr}.invite .btn.big{align-self:stretch}}
+.inv-actions{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:4px}
+.inv-actions .btn2{width:auto;padding:13px 26px}
+.invite .inv-actions .btn.big{align-self:auto}
+.invite.done .inv-actions .btn.big{display:none}
+#invite{scroll-margin-top:30vh}
+@media (max-width:560px){.inv-actions{flex-direction:column;align-items:stretch}.inv-actions .btn2{width:100%}}
 /* --- life --- */
 .logo .stripe i{transform-origin:left;animation:grow .7s cubic-bezier(.2,.7,.2,1) both}
 .logo .stripe i:nth-child(2){animation-delay:.12s}.logo .stripe i:nth-child(3){animation-delay:.24s}.logo .stripe i:nth-child(4){animation-delay:.36s}
@@ -248,7 +254,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="tz-sub">The full site launches at the end of 2026.</div>
  </div>
  <div class="tz-cta">
-  <a class="btn big" href="Tambora-Our-MVP-Site.pdf?v=20261112b" download><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M3 13h10"/></svg>Download PDF</a>
+  <a class="btn big" href="#invite">Claim your free demo-day invite</a>
   <a class="btn2" href="#aircraft">Learn more</a>
  </div>
  <span class="tz-cap">Concept render</span>
@@ -365,10 +371,9 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <label class="inv-f"><span>Mobile number</span><input id="inv-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="082 123 4567" required maxlength="20"></label>
    </div>
    <label class="inv-ok"><input id="inv-consent" type="checkbox" required> <span>I agree that Tambora may contact me about the demo day. We'll only use your number for this, and you can ask us to remove it at any time.</span></label>
-   <button class="btn big" type="submit">Join the free invite waiting list</button>
+   <div class="inv-actions"><button class="btn big" type="submit">Claim your free demo-day invite</button><a class="btn2" href="#aircraft">Back to the start</a></div>
    <p class="inv-msg" id="inv-msg" role="status" aria-live="polite"></p>
   </form>
-  <div class="closer-cta"><a class="btn big" href="Tambora-Our-MVP-Site.pdf?v=20261112b" download><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M3 13h10"/></svg>Download PDF</a><a class="btn2" href="#aircraft">Back to the start</a></div>
  </div>
 </section>
 <div class="endbar"><i></i><i></i><i></i><i></i></div>
@@ -403,6 +408,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <script>
 (function(){
  var f=document.getElementById('invite');if(!f)return;
+ document.querySelectorAll('a[href="#invite"]').forEach(function(a){a.addEventListener('click',function(){setTimeout(function(){document.getElementById('inv-name').focus({preventScroll:true})},700)})});
  var n=document.getElementById('inv-name'),p=document.getElementById('inv-phone'),c=document.getElementById('inv-consent'),m=document.getElementById('inv-msg'),b=f.querySelector('button');
  function msg(t,e){m.textContent=t;m.className='inv-msg'+(e?' err':'')}
  f.addEventListener('submit',function(ev){

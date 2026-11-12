@@ -109,6 +109,7 @@ background-image:linear-gradient(#211D33 1px,transparent 1px),linear-gradient(90
 .follow div.t{font-size:22px;font-weight:300;line-height:1.25;margin-top:18px}
 .follow div.t b{font-weight:500}
 
+@media (max-width:560px){.closer{background:#03060B!important}.closer picture{height:150vw!important}.closer picture img{object-position:50% 100%!important}.closer .closer-in{position:relative;margin-top:-96px}}
 /* tesla-style hero */
 html{scroll-behavior:smooth}
 .tz{position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden;padding:0}
@@ -408,7 +409,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </section>
 
 <section class="closer" id="closer">
- <picture><source srcset="img/night.webp" type="image/webp"><img src="img/night.jpg" alt="A Tambora aircraft on night patrol above city lights" width="1733" height="908" loading="lazy"></picture>
+ <picture><source media="(max-width:560px)" srcset="img/night-m.webp" type="image/webp"><source media="(max-width:560px)" srcset="img/night-m.jpg"><source srcset="img/night.webp" type="image/webp"><img src="img/night.jpg" alt="A Tambora aircraft on night patrol above city lights" width="1733" height="908" loading="lazy"></picture>
  <div class="closer-in w">
   <p class="closer-line rv">The first drone<br><b>that talks back.</b></p>
   <p class="closer-sub"><span class="cs-h">Drones don't talk.<br><b>Ours does.</b></span><span class="cs-s">Hear it first on 22 April. Free invites go out in January.</span></p>

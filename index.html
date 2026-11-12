@@ -224,6 +224,9 @@ html{scroll-behavior:smooth}
 .launch-s{margin-top:22px;font-size:12.5px;color:#9A97AE}
 .lab .meet{margin-top:14px}
 .dia-cap{margin-top:14px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#6E7B88;text-align:center}
+.pn-hook{display:inline-flex;align-items:center;gap:10px;margin-top:26px;padding:11px 18px;border-radius:22px;background:#0B1118;color:#F2EFE9;font-size:clamp(14px,1.4vw,16px);font-weight:500;max-width:100%;text-align:left}
+.pn-hook i{width:9px;height:9px;border-radius:50%;background:#7C5CFF;flex:none;box-shadow:0 0 0 0 rgba(124,92,255,.6);animation:vpulse 1.8s infinite}
+@keyframes vpulse{70%{box-shadow:0 0 0 9px rgba(124,92,255,0)}100%{box-shadow:0 0 0 0 rgba(124,92,255,0)}}
 .pn-sub{font-size:clamp(16px,1.6vw,20px);color:#4A4D52;margin-top:4px}
 /* --- life --- */
 .logo .stripe i{transform-origin:left;animation:grow .7s cubic-bezier(.2,.7,.2,1) both}
@@ -386,6 +389,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <span class="pn-lbl rv"><i class="live"></i>Demo day</span>
   <h2 class="rv">22 April.<br>Cape Town.</h2>
   <span class="pn-sub rv">Open to everyone. Free entry.<br>Limited spots, so sign up below.</span>
+  <span class="pn-hook rv"><i></i><span>Live reveal: the first drone that talks back. <b style="color:#A994FF;font-weight:600">Powered by Sagwic.</b></span></span>
  </div>
 </section>
 

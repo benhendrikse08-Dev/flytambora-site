@@ -127,6 +127,17 @@ html{scroll-behavior:smooth}
 .btn2:hover{background:#fff}
 .tz-cap{position:absolute;right:20px;bottom:14px;font-size:11px;font-style:italic;color:rgba(255,255,255,.7)}
 .hero h2{font-size:clamp(40px,5vw,64px)}
+.closer{position:relative;min-height:88vh;display:flex;align-items:flex-end;overflow:hidden;padding:0;color:#fff}
+.closer picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.closer::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,17,24,0) 30%,rgba(11,17,24,.55) 62%,rgba(11,17,24,.88) 100%)}
+.closer-in{position:relative;z-index:2;padding-bottom:72px;width:100%}
+.closer-line{color:#fff;font-size:clamp(36px,5.4vw,72px);font-weight:300;line-height:1.02;letter-spacing:-.035em;max-width:900px;text-wrap:balance}
+.closer-line b{font-weight:500}
+.closer-sub{color:#D7DCE2;font-size:17px;margin-top:20px}
+.closer-cta{display:flex;gap:16px;flex-wrap:wrap;margin-top:30px}
+.closer .tz-cap{z-index:2;top:16px;bottom:auto;right:20px;color:rgba(255,255,255,.85);text-shadow:0 1px 3px rgba(0,0,0,.5)}
+.closer-line{line-height:1.06}
+@media (max-width:560px){.closer{min-height:80vh}.closer-in{padding-bottom:48px}.closer-cta{flex-direction:column}.closer .btn.big,.closer .btn2{width:100%}}
 /* --- life --- */
 .logo .stripe i{transform-origin:left;animation:grow .7s cubic-bezier(.2,.7,.2,1) both}
 .logo .stripe i:nth-child(2){animation-delay:.12s}.logo .stripe i:nth-child(3){animation-delay:.24s}.logo .stripe i:nth-child(4){animation-delay:.36s}
@@ -320,6 +331,15 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  </div>
 </section>
 
+<section class="closer" id="closer">
+ <picture><source srcset="img/lesson.webp" type="image/webp"><img src="img/lesson.jpg" alt="A crashed drone (not a Tambora aircraft) in pieces on a dirt field" width="1672" height="941" loading="lazy"></picture>
+ <div class="closer-in w">
+  <p class="closer-line rv">Tech doesn't always go to plan.<br><b>Luckily, this isn't our drone.</b></p>
+  <p class="closer-sub">Autonomy for essential services. Built one honest step at a time.</p>
+  <div class="closer-cta"><a class="btn big" href="Tambora-Our-MVP-Site.pdf?v=20261112b" download><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M3 13h10"/></svg>Download PDF</a><a class="btn2" href="#aircraft">Back to the start</a></div>
+ </div>
+ <span class="tz-cap">Not our drone. Promise.</span>
+</section>
 <div class="endbar"><i></i><i></i><i></i><i></i></div>
 <footer><div class="w"><span>Tambora Technologies (Pty) Ltd · South Africa</span><span>flytambora.com</span></div></footer>
 <script>

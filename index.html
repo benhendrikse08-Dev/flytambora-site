@@ -179,6 +179,12 @@ html{scroll-behavior:smooth}
 .invite.done .inv-msg{order:-1;margin-bottom:6px}
 .closer.signed .closer-line{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.ph-shot{margin-top:56px}
+.ph-shot{max-width:860px;margin-left:auto;margin-right:auto}
+.ph-shot picture{display:block;border-radius:4px;overflow:hidden;box-shadow:0 12px 28px rgba(11,17,24,.16)}
+.ph-shot img{width:100%;height:auto}
+@media (max-width:560px){.ph-shot{margin-top:36px}}
+.ph-shot .cap{margin-top:8px;font-size:12px}
 /* --- life --- */
 .logo .stripe i{transform-origin:left;animation:grow .7s cubic-bezier(.2,.7,.2,1) both}
 .logo .stripe i:nth-child(2){animation-delay:.12s}.logo .stripe i:nth-child(3){animation-delay:.24s}.logo .stripe i:nth-child(4){animation-delay:.36s}
@@ -278,8 +284,8 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <div class="hero">
  <div>
   <div class="kicker">Tambora</div>
-  <h2>Autonomous drones,<br><b>docks and AI.</b></h2>
-  <p class="lede">Tambora builds autonomous drones, the docks they live in and the AI that flies them. We start with security in South Africa, then move into medical and heavy-load aviation.</p>
+  <h2>One company.<br><b>Built in increments.</b></h2>
+  <p class="lede">Tambora builds autonomous drones, the docks they live in and the AI that flies them, and owns all of it. We start with security in South Africa, and every new mission starts with everything the last one proved.</p>
  </div>
  <div class="craft">
   <div class="pic"><div class="shadow"></div>
@@ -299,21 +305,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  <div class="w"><p class="rv">Most autonomy is built for consumers. <b>Ours is built for the services that protect them.</b></p><div class="bar"><i></i><i></i><i></i><i></i></div></div>
 </section>
 
-<section>
- <div class="w one">
-  <div>
-   <div class="kicker">One company, one mission</div>
-   <h2>One company.<br><b>Built in increments.</b></h2>
-   <p>Tambora owns the aircraft, the docks, the AI and the team. Every new mission starts with everything the last one proved.</p>
-  </div>
-  <figure class="shot rv">
-   <picture><source srcset="img/live-view.webp" type="image/webp"><img src="img/live-view.jpg" alt="Operator's view from a Tambora aircraft over Stellenbosch at dusk" width="1536" height="1024" loading="lazy"></picture>
-   <figcaption class="cap">Concept: the operator's view on a phase one patrol, Stellenbosch at dusk.</figcaption>
-  </figure>
- </div>
-</section>
-
-<section id="phases" style="padding-top:24px">
+<section id="phases">
  <div class="w">
   <div class="ph-head rv">
    <div><div class="kicker">The phases</div><h2>From simple<br><b>to complex.</b></h2></div>
@@ -324,6 +316,7 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
    <div class="phase"><div class="n">02</div><h3>Medical</h3><div class="st">Next</div><p>Heavy-load delivery of blood, medicine and equipment between hospitals and clinics.</p></div>
    <div class="phase"><div class="n">03</div><h3>Firefighting</h3><div class="st">Later</div><p>Heavy-lift aircraft that help detect, map and fight wildfires.</p></div>
   </div>
+  <figure class="ph-shot"><picture><source srcset="img/live-view.webp" type="image/webp"><img src="img/live-view.jpg" alt="Operator's view from a Tambora aircraft over Stellenbosch at dusk" width="1536" height="1024" loading="lazy"></picture><figcaption class="cap">Phase one in action: the operator's view on a patrol over Stellenbosch (concept).</figcaption></figure>
   <div class="after rv">And after that: heavy-load aviation, and one day, vehicles that fly.</div>
  </div>
 </section>

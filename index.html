@@ -142,6 +142,23 @@ html{scroll-behavior:smooth}
 .closer .tz-cap{z-index:2;top:16px;bottom:auto;right:20px;color:rgba(255,255,255,.85);text-shadow:0 1px 3px rgba(0,0,0,.5)}
 .closer-line{line-height:1.06}
 @media (max-width:560px){.closer{min-height:0;display:block;background:#0B1118}.closer::after{display:none}.closer picture{display:block;position:relative;height:56vh}.closer picture img{object-position:80% 40%}.closer .closer-in{padding-top:8px;padding-bottom:56px}.closer-cta{flex-direction:column}.closer .btn.big,.closer .btn2{width:100%}}
+.invite{margin-top:26px;display:flex;flex-direction:column;gap:14px;max-width:560px}
+.inv-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.inv-f{display:flex;flex-direction:column;gap:6px;font-size:12px;color:#C9D0D6}
+.inv-f input{font:inherit;font-size:16px;color:#fff;background:rgba(11,17,24,.6);border:1px solid rgba(255,255,255,.28);border-radius:8px;padding:12px 14px;outline:none}
+.inv-f input:focus{border-color:#fff}
+.inv-f input.bad{border-color:#FF8A8A}
+.inv-ok{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;line-height:1.5;color:#C9D0D6}
+.inv-ok input{margin-top:3px;width:16px;height:16px;flex:none;accent-color:#1E9461}
+.invite .btn.big{align-self:flex-start;width:auto;padding:13px 26px 16px;cursor:pointer;border:0;font:inherit;font-size:15px;font-weight:500}
+.invite .btn.big{background:#fff;color:#0B1118;font-weight:600}
+.invite .btn.big:hover{background:#F2EFE9}
+.invite .btn.big[disabled]{opacity:.6;cursor:default}
+.inv-msg{font-size:14px;color:#9EE6C1;min-height:1em}
+.inv-msg.err{color:#FF9C9C}
+.invite.done .inv-row,.invite.done .inv-ok,.invite.done button{display:none}
+.invite.done .inv-msg{font-size:18px;color:#fff}
+@media (max-width:560px){.inv-row{grid-template-columns:1fr}.invite .btn.big{align-self:stretch}}
 /* --- life --- */
 .logo .stripe i{transform-origin:left;animation:grow .7s cubic-bezier(.2,.7,.2,1) both}
 .logo .stripe i:nth-child(2){animation-delay:.12s}.logo .stripe i:nth-child(3){animation-delay:.24s}.logo .stripe i:nth-child(4){animation-delay:.36s}
@@ -342,6 +359,15 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <p class="closer-line rv">The first drone<br><b>that talks back.</b></p>
   <p class="closer-sub">In an emergency, sometimes the best thing is not being alone. So we built a drone you can have a conversation with.</p>
   <div class="preorder"><i class="live"></i><span><b>Meet the Sagwic ChatBot at demo day: Cape Town, Thursday 22 April 2027.</b> Free invites go out in January.</span></div>
+  <form class="invite" id="invite" novalidate>
+   <div class="inv-row">
+    <label class="inv-f"><span>Full name</span><input id="inv-name" name="name" autocomplete="name" required maxlength="80"></label>
+    <label class="inv-f"><span>Mobile number</span><input id="inv-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="082 123 4567" required maxlength="20"></label>
+   </div>
+   <label class="inv-ok"><input id="inv-consent" type="checkbox" required> <span>I agree that Tambora may contact me about the demo day. We'll only use your number for this, and you can ask us to remove it at any time.</span></label>
+   <button class="btn big" type="submit">Join the free invite waiting list</button>
+   <p class="inv-msg" id="inv-msg" role="status" aria-live="polite"></p>
+  </form>
   <div class="closer-cta"><a class="btn big" href="Tambora-Our-MVP-Site.pdf?v=20261112b" download><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v8M4.5 6.5 8 10l3.5-3.5M3 13h10"/></svg>Download PDF</a><a class="btn2" href="#aircraft">Back to the start</a></div>
  </div>
 </section>
@@ -372,6 +398,25 @@ footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   };
   var bag=['look','look','look','up','up','blink','blink','think','scan','cross','roll'];
   (async function loop(){await wait(800);for(;;){await moves[bag[Math.floor(Math.random()*bag.length)]]();if(Math.random()<.35)await moves.blink()}})();
+})();
+</script>
+<script>
+(function(){
+ var f=document.getElementById('invite');if(!f)return;
+ var n=document.getElementById('inv-name'),p=document.getElementById('inv-phone'),c=document.getElementById('inv-consent'),m=document.getElementById('inv-msg'),b=f.querySelector('button');
+ function msg(t,e){m.textContent=t;m.className='inv-msg'+(e?' err':'')}
+ f.addEventListener('submit',function(ev){
+  ev.preventDefault();n.classList.remove('bad');p.classList.remove('bad');
+  var name=n.value.trim(),ph=p.value.replace(/[^0-9+]/g,'');
+  if(name.split(/\s+/).length<2){n.classList.add('bad');return msg('Please enter your full name.',1)}
+  if(!/^(\+?27|0)[6-8][0-9]{8}$/.test(ph)&&!/^\+[1-9][0-9]{7,14}$/.test(ph)){p.classList.add('bad');return msg('Please enter a valid mobile number, e.g. 082 123 4567.',1)}
+  if(!c.checked)return msg('Please tick the box so we can contact you.',1);
+  b.disabled=true;msg('Adding you to the list…');
+  var d=new FormData();d.append('entry.1394393449',name);d.append('entry.2555204',ph);d.append('entry.1614850659','Yes');
+  fetch('https://docs.google.com/forms/d/e/1FAIpQLSf0Ejk1RYoVrohEpsW4PSeTVsEy1I2WBUvD8XTt9u8j2iIgfw/formResponse',{method:'POST',mode:'no-cors',body:d}).then(function(){
+   f.classList.add('done');msg('You\'re on the list, '+name.split(' ')[0]+'. We\'ll send your invite in January.');
+  }).catch(function(){b.disabled=false;msg('That didn\'t go through. Check your connection and try again.',1)});
+ });
 })();
 </script>
 </body>

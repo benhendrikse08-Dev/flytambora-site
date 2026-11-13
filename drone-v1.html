@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Drone V1 takes off · Tambora</title>
+<meta name="description" content="Introducing Drone V1, Tambora's first autonomous security drone, built with SafeGuard.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Tambora">
+<meta property="og:title" content="Drone V1 takes off">
+<meta property="og:description" content="Tambora's first autonomous security drone, built with SafeGuard.">
+<meta property="og:image" content="https://flytambora.com/og-tambora.jpg">
+<meta property="og:url" content="https://flytambora.com/drone-v1.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F2EFE9">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0B1118;--body:#2E3135;--mute:#8C8578;--rule:#DDD8CF;--paper:#F2EFE9;
+--s1:#2457A6;--s2:#1E9461;--s3:#F2B705;--s4:#7C5CFF;--s1b:#5B8FE0;
+--ph1:#E3F1E8;--ph2:#EBF6EF;--ph-ink:#2F7A55;--ph-icon:#A6D3B8;--ph-line:#C6E4D2}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:Inter,"Helvetica Neue",Arial,sans-serif;font-optical-sizing:auto;background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6}
+a{color:inherit}
+.w{max-width:1160px;margin:0 auto;padding:0 32px}
+.nw{max-width:760px;margin:0 auto;padding:0 32px}
+.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
+p{font-size:18px;line-height:1.7;color:var(--body)}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:5;background:rgba(242,239,233,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+.bar .w{display:flex;justify-content:space-between;align-items:center;height:64px}
+.logo{display:inline-flex;flex-direction:column;gap:5px;text-decoration:none}
+.logo .top{display:flex;align-items:flex-end;gap:10px}
+.logo svg{height:20px;width:auto;display:block}
+.logo .wm{font-weight:600;font-size:16px;line-height:.78;letter-spacing:.045em}
+.stripe{display:flex;gap:2px;height:4px}.stripe i{flex:1}
+.stripe i:nth-child(1){background:var(--s1)}.stripe i:nth-child(2){background:var(--s2)}.stripe i:nth-child(3){background:var(--s3)}.stripe i:nth-child(4){background:var(--s4)}
+.back{font-size:14px;font-weight:500;text-decoration:none;padding:6px 12px;border-radius:999px;border:1px solid rgba(11,17,24,.14)}
+.back:hover{background:rgba(11,17,24,.05)}
+
+/* release header */
+.rel{padding:72px 0 40px}
+.kick{display:flex;gap:10px;align-items:center;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.kick b{color:var(--ink);font-weight:600}
+.tag-t{display:inline-flex;flex-direction:column;gap:3px}
+.tag-t svg{height:14px;width:15.4px;fill:var(--ink);display:block}
+.tag-t i{display:flex;gap:1px;height:3px}.tag-t i b{flex:1}
+.tag-t i b:nth-child(1){background:var(--s1)}.tag-t i b:nth-child(2){background:var(--s2)}.tag-t i b:nth-child(3){background:var(--s3)}.tag-t i b:nth-child(4){background:var(--s4)}
+h1{margin-top:22px;font-size:clamp(44px,6.4vw,84px);font-weight:500;letter-spacing:-.045em;line-height:1}
+.sub{margin-top:20px;font-size:clamp(20px,2.2vw,26px);font-weight:300;line-height:1.35;letter-spacing:-.01em;color:var(--ink);max-width:30ch}
+.lead{margin-top:28px}
+.lead p+p{margin-top:16px}
+
+/* placeholder (light green) */
+.ph{position:relative;aspect-ratio:16/9;width:100%;border-radius:14px;overflow:hidden;background:repeating-linear-gradient(135deg,var(--ph1) 0 14px,var(--ph2) 14px 28px);border:1px dashed var(--ph-line);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:var(--ph-ink);padding:24px;text-align:center}
+.ph svg{width:110px;height:auto;fill:var(--ph-icon)}
+.ph .k{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+.ph .t{font-size:15px;line-height:1.45;max-width:46ch;font-weight:500}
+.ph.sq{aspect-ratio:4/3}
+figure{margin:0}
+figcaption{margin-top:12px;font-size:13px;color:var(--mute)}
+.wide{padding:24px 0 8px}
+
+/* body blocks */
+.blk{padding:72px 0;border-top:1px solid var(--rule)}
+.blk h2{font-size:clamp(30px,3.6vw,44px);font-weight:500;letter-spacing:-.035em;line-height:1.06}
+.blk h2 em{font-style:normal;color:var(--c,var(--ink))}
+.blk p{margin-top:16px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.quote{margin-top:28px;padding-left:18px;border-left:3px solid var(--s1);font-size:20px;font-weight:300;line-height:1.45;color:var(--ink)}
+.quote span{display:block;margin-top:10px;font-size:13px;font-weight:500;color:var(--mute)}
+
+.sg{background:#0B1830;color:#fff;background-image:linear-gradient(rgba(91,143,224,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(91,143,224,.09) 1px,transparent 1px);background-size:36px 36px;border:0}
+.sg p{color:#B9C1C9}
+.sg .quote{color:#fff;border-color:var(--s1b)}.sg .quote span{color:#8E99A6}
+.sg-plate{display:inline-flex;background:#fff;border-radius:10px;padding:10px 14px;margin-bottom:22px}
+.sg-plate img{height:38px;width:auto;display:block}
+
+.steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:32px}
+.steps li{border-top:3px solid var(--ink);padding-top:14px}
+.steps li:nth-child(1){border-color:var(--s1)}.steps li:nth-child(2){border-color:var(--s2)}.steps li:nth-child(3){border-color:var(--s4)}
+.steps .n{font-size:12px;color:var(--mute)}
+.steps h3{margin-top:6px;font-size:20px;font-weight:600;letter-spacing:-.01em}
+.steps p{margin-top:6px;font-size:15.5px;line-height:1.55}
+
+.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:32px;border-top:1px solid var(--ink)}
+.specs div{padding:20px 20px 22px 0;border-bottom:1px solid var(--rule)}
+.specs span{display:block;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.specs b{display:block;margin-top:6px;font-size:19px;font-weight:500;letter-spacing:-.01em}
+.tbc{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:12.5px!important;font-weight:400!important;color:var(--ph-ink);background:var(--ph1);border:1px dashed var(--ph-line);border-radius:6px;padding:3px 8px}
+
+.cta{padding:80px 0 96px;text-align:center;background:var(--ink);color:#fff}
+.cta h2{font-size:clamp(34px,4.4vw,56px);font-weight:500;letter-spacing:-.04em;line-height:1.04}
+.cta p{color:#B9C1C9;margin:16px auto 0;max-width:46ch}
+.cta .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;text-decoration:none;background:#fff;color:var(--ink);padding:13px 24px 16px;border-radius:10px}
+.btn::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:linear-gradient(90deg,var(--s1) 0 25%,var(--s2) 25% 50%,var(--s3) 50% 75%,var(--s4) 75% 100%)}
+.btn2{display:inline-flex;align-items:center;font-size:15px;font-weight:500;text-decoration:none;color:#fff;padding:13px 24px;border-radius:10px;border:1px solid rgba(255,255,255,.25)}
+
+.press{padding:44px 0 56px}
+.press h4{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);font-weight:500}
+.press p{margin-top:10px;font-size:15px}
+.endbar{display:flex;height:10px}.endbar i{flex:1}
+.endbar i:nth-child(1){background:var(--s1)}.endbar i:nth-child(2){background:var(--s2)}.endbar i:nth-child(3){background:var(--s3)}.endbar i:nth-child(4){background:var(--s4)}
+footer{background:#fff;padding:22px 0;font-size:12.5px;color:var(--mute)}
+footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media (max-width:800px){.two,.steps,.specs{grid-template-columns:1fr}.two{gap:32px}.specs{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.w,.nw{padding:0 20px}.rel{padding:44px 0 28px}p{font-size:17px}.blk{padding:56px 0}}
+</style>
+</head>
+<body>
+
+<div class="bar"><div class="w">
+ <a class="logo" href="/" aria-label="Tambora home">
+  <span class="top"><svg viewBox="22 34 156 142" aria-hidden="true"><path fill="#0B1118" d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><span class="wm">TAMBORA</span></span>
+  <span class="stripe"><i></i><i></i><i></i><i></i></span>
+ </a>
+ <a class="back" href="/#drone">← Back to Tambora</a>
+</div></div>
+
+<main>
+<header class="rel">
+ <div class="nw">
+  <div class="kick"><span class="tag-t"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><i><b></b><b></b><b></b><b></b></i></span><b>Press release</b><span>·</span><span>November 2026</span></div>
+  <h1>Drone V1 takes off.</h1>
+  <div class="sub">A new kind of first responder is on duty.</div>
+  <div class="lead">
+   <p><b>Cape Town, South Africa.</b> Tambora today introduced Drone V1, its first autonomous security drone, built together with SafeGuard Technologies. It lives on a rooftop dock and launches the moment an alarm goes off, so it's overhead in the time it takes most people to find their keys. It flies itself, reads the ground below, and can speak to whoever's there. When the job is done, it lands on its dock and charges itself.</p>
+   <p>No pilot. No waiting. It guards a site around the clock, and it's the first step in Tambora's mission to bring autonomy to essential services.</p>
+  </div>
+ </div>
+</header>
+
+<section class="wide"><div class="w">
+ <figure>
+  <div class="ph">
+   <!-- replace with: <img src="img/drone-v1-hero.jpg" alt="Drone V1 lifting off its rooftop dock"> -->
+   <svg viewBox="0 0 120 48"><path d="M44 16h32a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4H44a4 4 0 0 1-4-4v-6a4 4 0 0 1 4-4zM8 14h38v4H8a2 2 0 0 1 0-4zm66 0h38a2 2 0 0 1 0 4H74zM2 8h22a1.5 1.5 0 0 1 0 3H2a1.5 1.5 0 0 1 0-3zm94 0h22a1.5 1.5 0 0 1 0 3H96a1.5 1.5 0 0 1 0-3zM55 30h10a3 3 0 0 1 3 3v2a3 3 0 0 1-3 3H55a3 3 0 0 1-3-3v-2a3 3 0 0 1 3-3zM32 42h56a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H32a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2z"/></svg>
+   <span class="k">Photo needed · hero</span>
+   <span class="t">Drone V1 lifting off its rooftop dock at dusk. Wide, cinematic, same light as the homepage hero.</span>
+  </div>
+  <figcaption>Drone V1 on its rooftop dock.</figcaption>
+ </figure>
+</div></section>
+
+<section class="blk sg"><div class="nw">
+ <span class="sg-plate"><img src="img/safeguard.png" alt="SafeGuard Technologies" width="535" height="196"></span>
+ <h2>Built with SafeGuard.</h2>
+ <p>Drone V1 was designed and built by the SafeGuard team, working inside Tambora. SafeGuard is co-owned with Tambora and brings the on-the-ground security know-how. Tambora builds the aircraft, the dock and the software. SafeGuard takes it to the people who need it and keeps it flying on site.</p>
+ <p>It's a partnership built so that every security call teaches the system something, and every lesson makes the next drone better.</p>
+ <div class="quote">"Guards can't be everywhere at once. Drone V1 can be there first, see what's happening and tell the team exactly what they're walking into."<span>Tumelo Mokoena, Director of SafeGuard and Tambora co-founder <i class="tbc">[ draft quote, Tumelo to approve ]</i></span></div>
+</div></section>
+
+<section class="blk"><div class="w two">
+ <figure>
+  <div class="ph sq">
+   <!-- replace with: <img src="img/dock.jpg" alt="The Drone V1 dock, open"> -->
+   <svg viewBox="0 0 64 48"><path d="M4 8h12l4-6h24l4 6h12a4 4 0 0 1 4 4v30a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V12a4 4 0 0 1 4-4zm28 8a12 12 0 1 0 0 24 12 12 0 0 0 0-24z"/></svg>
+   <span class="k">Photo needed</span>
+   <span class="t">Close-up of the dock with its lid open and the drone sitting inside.</span>
+  </div>
+ </figure>
+ <div>
+  <h2>Home is <em style="color:var(--s1)">a dock.</em></h2>
+  <p>Drone V1 lives in a weatherproof dock on a rooftop near the site it protects. The dock opens, launches the drone, brings it home and charges it, all on its own. Nobody needs to touch it between flights.</p>
+ </div>
+</div></section>
+
+<section class="blk"><div class="w">
+ <h2>When the alarm goes off.</h2>
+ <ol class="steps">
+  <li><span class="n mono">01</span><h3>Alarm.</h3><p>A security alarm or panic button sends the alert to Tambora.</p></li>
+  <li><span class="n mono">02</span><h3>Launch.</h3><p>Drone V1 lifts off from its dock and flies itself to the scene.</p></li>
+  <li><span class="n mono">03</span><h3>Eyes on it.</h3><p>The guard watches live on their phone, and the drone can speak to whoever's on the ground.</p></li>
+ </ol>
+</div></section>
+
+<section class="blk"><div class="w two">
+ <div>
+  <h2>Reads <em style="color:var(--s1)">the ground.</em></h2>
+  <p>Tambora's software tells people from cars, trees and everything else, then finds what it's looking for, even in a crowd. Guards see what matters, not just a video feed.</p>
+  <p style="margin-top:14px"><a href="/#software" style="font-weight:600">See it pick out our founders →</a></p>
+ </div>
+ <div>
+  <h2>And it <em style="color:var(--s4)">talks back.</em></h2>
+  <p>Powered by Sagwic, Tambora's AI lab, Drone V1 can hold a conversation with the people below. It can warn, reassure or ask what's wrong before a guard arrives.</p>
+  <p style="margin-top:14px"><a href="/#demo" style="font-weight:600">Talk to it on 22 April →</a></p>
+ </div>
+</div></section>
+
+<section class="blk"><div class="w">
+ <h2>Drone V1 at a glance.</h2>
+ <div class="specs">
+  <div><span>Pilot</span><b>None needed</b></div>
+  <div><span>Launch</span><b>Automatic, from its dock</b></div>
+  <div><span>Charging</span><b>Automatic, on the dock</b></div>
+  <div><span>Flight time</span><b><i class="tbc">[ to confirm ]</i></b></div>
+  <div><span>Response radius</span><b><i class="tbc">[ to confirm ]</i></b></div>
+  <div><span>Camera</span><b><i class="tbc">[ to confirm ]</i></b></div>
+  <div><span>Detection</span><b>People, vehicles and more</b></div>
+  <div><span>Voice</span><b>Two-way, powered by Sagwic</b></div>
+  <div><span>Operated by</span><b>SafeGuard</b></div>
+ </div>
+</div></section>
+
+<section class="cta"><div class="w">
+ <h2>Flying today with SafeGuard.</h2>
+ <p>Drone V1 is in action now. To have it guard your site, get in touch. Or come and meet it in person.</p>
+ <div class="row"><a class="btn" href="/#demo">Reserve a demo day spot →</a><a class="btn2" href="mailto:hello@flytambora.com">hello@flytambora.com</a></div>
+</div></section>
+
+<section class="press"><div class="nw">
+ <h4>About Tambora</h4>
+ <p>Tambora Technologies builds autonomous drones for essential services, starting with security, then medical delivery (2029) and firefighting (2031). Its AI lab, Sagwic, builds the intelligence behind every drone. SafeGuard Technologies is Tambora's security distribution and technology partner.</p>
+ <h4 style="margin-top:26px">Press contact</h4>
+ <p>hello@flytambora.com</p>
+</div></section>
+</main>
+
+<div class="endbar"><i></i><i></i><i></i><i></i></div>
+<footer><div class="w"><span>© 2026 Tambora Technologies (Pty) Ltd · South Africa</span><a href="/" style="text-decoration:none">flytambora.com</a></div></footer>
+</body></html>

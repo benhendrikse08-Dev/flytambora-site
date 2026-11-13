@@ -158,19 +158,36 @@ header{display:flex;justify-content:space-between;align-items:center;padding:30p
 .trio span{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#9AA6B2}
 
 /* arm pages (SafeGuard, Medical, FF) */
-.arm{padding:120px 0;border-top:1px solid var(--rule)}
-.arm-in{display:grid;grid-template-columns:1fr 1.25fr;gap:64px;align-items:center}
+.arm{padding:130px 0;position:relative;overflow:hidden}
+.arm-in{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1.25fr;gap:64px;align-items:center}
 .arm-in>div:first-child{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
 .arm h2{font-size:clamp(40px,5.2vw,68px);font-weight:500;letter-spacing:-.04em;line-height:1}
 .arm h2 em{font-style:normal;color:var(--c)}
 .arm p{max-width:44ch}
-.arm .bar{width:64px;height:6px;background:var(--c)}
+.arm-n{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--c)}
 .arm .meta{font-size:13px;color:var(--mute)}
 .arm .meta b{color:var(--ink);font-weight:600}
 .arm.flip .arm-in>div:first-child{order:2}
-.sg-logo{height:52px;width:auto}
-.sg-go{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:#1A3A72;color:#fff;text-decoration:none;font-size:14px;font-weight:600;transition:transform .25s,background .25s}
-.sg-go:hover{background:#0F2A57;transform:translateY(-1px)}
+.arm.dark{color:#fff}
+.arm.dark p{color:#B9C1C9}
+.arm.dark .tag{color:#9AA6B2}.arm.dark .tag strong{color:#fff}
+.arm.dark .meta{color:#8E99A6}.arm.dark .meta b{color:#fff}
+.arm.dark .chip{background:rgba(255,255,255,.1);color:#fff}
+/* security: night-blue with a radar grid */
+.arm.sec{background:#0B1830;background-image:linear-gradient(rgba(91,143,224,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(91,143,224,.09) 1px,transparent 1px);background-size:36px 36px}
+.arm.sec::before{content:"";position:absolute;right:-12%;top:50%;width:780px;aspect-ratio:1;transform:translateY(-50%);border-radius:50%;background:repeating-radial-gradient(circle,rgba(91,143,224,.13) 0 1px,transparent 1px 64px)}
+.sg-plate{display:inline-flex;background:#fff;border-radius:10px;padding:10px 14px}
+.sg-logo{height:40px;width:auto}
+/* medical: clean, clinical white with a soft cross */
+.arm.med{background:#fff;border-top:6px solid var(--s2)}
+.arm.med::before,.arm.med::after{content:"";position:absolute;background:#EEF7F1;border-radius:18px}
+.arm.med::before{left:-60px;top:50%;width:300px;height:96px;transform:translateY(-50%)}
+.arm.med::after{left:42px;top:50%;width:96px;height:300px;transform:translateY(-50%)}
+/* fire: charcoal with an ember glow */
+.arm.fire{background:#120D09;background-image:radial-gradient(ellipse 70% 60% at 75% 115%,rgba(242,120,5,.38),transparent 70%),radial-gradient(ellipse 40% 30% at 15% 0%,rgba(242,183,5,.10),transparent 70%)}
+.arm.fire .chip.pending{color:var(--s3)}
+.sg-go{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:var(--s1);color:#fff;text-decoration:none;font-size:14px;font-weight:600;transition:transform .25s,background .25s}
+.sg-go:hover{background:#1C4A92;transform:translateY(-1px)}
 .row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
 
 /* demo day */
@@ -263,7 +280,7 @@ footer{background:#fff;padding:40px 0 28px;font-size:14px;color:var(--body)}
  .lab-in,.arm-in,.ft-top{grid-template-columns:1fr}
  .arm.flip .arm-in>div:first-child{order:0}
  .circle{margin:0 auto;width:min(300px,100%)}
- .arm{padding:80px 0}
+ .arm{padding:84px 0}.arm.sec::before{width:520px;right:-40%}.arm.med::before,.arm.med::after{display:none}
  .dd-card{grid-template-columns:1fr}.dd-card .ph{min-height:240px;aspect-ratio:16/10}
  .dd-body{padding:32px 26px}
 }
@@ -320,7 +337,7 @@ footer{background:#fff;padding:40px 0 28px;font-size:14px;color:var(--body)}
 <!-- 2. WHY WE EXIST (problem statement, no image) -->
 <section class="pn paper short" id="why">
  <div class="w pn-in">
-  <span class="tag all rv"><span class="tm"><svg viewBox="22 34 156 142"><use href="#t"/></svg><b><i></i><i></i><i></i><i></i></b></span>Why we exist</span>
+  <span class="tag all rv"><span class="tm"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><b><i></i><i></i><i></i><i></i></b></span>Why we exist</span>
   <h2 class="rv">Autonomy for<br>essential services.</h2>
   <p class="lead rv">When something goes wrong, help is minutes away. Those minutes matter. Our drones are already in the air.</p>
   <div class="pn-bar rv"><i></i><i></i><i></i><i></i></div>
@@ -330,7 +347,7 @@ footer{background:#fff;padding:40px 0 28px;font-size:14px;color:var(--body)}
 <!-- 3. DRONE V1 + DOCK -->
 <section class="pn ink" id="drone">
  <div class="w pn-in">
-  <span class="tag all rv"><span class="tm"><svg viewBox="22 34 156 142"><use href="#t"/></svg><b><i></i><i></i><i></i><i></i></b></span><strong>Tambora</strong><span class="sep">·</span>Phase one, in action now</span>
+  <span class="tag all rv"><span class="tm"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><b><i></i><i></i><i></i><i></i></b></span><strong>Tambora</strong><span class="sep">·</span>Phase one, in action now</span>
   <h2 class="rv">Drone V1.</h2>
   <p class="lead rv">Lives on a rooftop dock. Launches, flies and charges itself.</p>
   <figure class="pn-img rv">
@@ -341,14 +358,14 @@ footer{background:#fff;padding:40px 0 28px;font-size:14px;color:var(--body)}
     <span class="ph-t">Drone V1 sitting on its dock, side by side. Clean background, daylight.</span>
    </div>
   </figure>
-  <button class="link rv" type="button" data-dlg="hw">How it works <span class="arr" aria-hidden="true">→</span></button>
+  <a class="link rv" href="drone-v1.html">Learn more <span class="arr" aria-hidden="true">→</span></a>
  </div>
 </section>
 
 <!-- 4. SOFTWARE (founders prove it) -->
 <section class="pn paper" id="software">
  <div class="w pn-in">
-  <span class="tag all rv"><span class="tm"><svg viewBox="22 34 156 142"><use href="#t"/></svg><b><i></i><i></i><i></i><i></i></b></span><strong>Tambora</strong><span class="sep">·</span>The software</span>
+  <span class="tag all rv"><span class="tm"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><b><i></i><i></i><i></i><i></i></b></span><strong>Tambora</strong><span class="sep">·</span>The software</span>
   <h2 class="rv">Reads the ground.</h2>
   <p class="lead rv">It tells people from cars, trees and everything else, then finds the one it's looking for. Even in a crowd.</p>
   <figure class="pn-img scan rv">
@@ -376,7 +393,7 @@ footer{background:#fff;padding:40px 0 28px;font-size:14px;color:var(--body)}
 <section class="pn lab" id="lab">
  <div class="w lab-in">
   <div>
-   <span class="tag rv" style="--c:var(--s4)"><span class="tm"><svg viewBox="22 34 156 142"><use href="#t"/></svg><b><i></i></b></span><strong>Sagwic</strong><span class="sep">·</span>Tambora's AI lab</span>
+   <span class="tag rv" style="--c:var(--s4)"><span class="tm"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><b><i></i></b></span><strong>Sagwic</strong><span class="sep">·</span>Tambora's AI lab</span>
    <h2 class="rv">The brain<br><b>behind the drone.</b></h2>
    <p class="rv">Sagwic builds the AI that lets our drones see, decide and talk back.</p>
    <div class="launch-s mono rv">sagwic.com opens end of January 2027</div>
@@ -392,7 +409,7 @@ footer{background:#fff;padding:40px 0 28px;font-size:14px;color:var(--body)}
 <!-- 6. BRIDGE: from the MVPs to the bigger mission -->
 <section class="pn ink short" id="mission">
  <div class="w pn-in">
-  <span class="tag all rv"><span class="tm"><svg viewBox="22 34 156 142"><use href="#t"/></svg><b><i></i><i></i><i></i><i></i></b></span>The bigger mission</span>
+  <span class="tag all rv"><span class="tm"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><b><i></i><i></i><i></i><i></i></b></span>The bigger mission</span>
   <h2 class="md rv">The world needs to be safer.<br>Security is just the start.</h2>
   <div class="trio rv">
    <div><h2 style="color:var(--s1b)">Security.</h2><span>Now</span></div>
@@ -402,14 +419,15 @@ footer{background:#fff;padding:40px 0 28px;font-size:14px;color:var(--body)}
  </div>
 </section>
 
-<!-- 7. SAFEGUARD (security partner) -->
-<section class="arm paper" id="safeguard" style="--c:var(--s1)">
+<!-- 7. SECURITY · SAFEGUARD -->
+<section class="arm sec dark" id="safeguard" style="--c:var(--s1b)">
  <div class="w arm-in">
   <div>
-   <span class="tag rv"><span class="tm"><svg viewBox="22 34 156 142"><use href="#t"/></svg><b><i></i></b></span><strong>Security</strong><span class="sep">·</span>with SafeGuard</span>
-   <img class="sg-logo rv" src="img/safeguard.png" alt="SafeGuard Technologies" width="535" height="196" loading="lazy">
+   <span class="arm-n mono rv">01 · Security</span>
+   <span class="tag rv" style="--c:var(--s1)"><span class="tm"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><b><i></i></b></span><strong>Security</strong><span class="sep">·</span>with SafeGuard</span>
+   <span class="sg-plate rv"><img class="sg-logo" src="img/safeguard.png" alt="SafeGuard Technologies" width="535" height="196" loading="lazy"></span>
    <h2 class="rv">Our security<br><em>partner.</em></h2>
-   <p class="rv">SafeGuard Technologies is Tambora's security distribution and technology partner. They put our drones on site and keep them flying for the people who need them.</p>
+   <p class="rv">SafeGuard Technologies is Tambora's security distribution and technology partner. SafeGuard is co-owned with Tambora, and its technology is built inside Tambora. They put our drones on site and keep them flying for the people who need them.</p>
    <p class="meta rv">Led by <b>Tumelo Mokoena</b>, Director of SafeGuard and Tambora's co-founder and COO.</p>
    <div class="row rv"><span class="chip"><i class="live"></i>Live now</span><a class="sg-go" href="https://www.safeguardtechno.com" target="_blank" rel="noopener">Visit SafeGuard →</a></div>
   </div>
@@ -425,11 +443,11 @@ footer{background:#fff;padding:40px 0 28px;font-size:14px;color:var(--body)}
 </section>
 
 <!-- 8. TAMBORA MEDICAL (pending) -->
-<section class="arm paper flip" id="medical" style="--c:var(--s2)">
+<section class="arm med flip" id="medical" style="--c:var(--s2)">
  <div class="w arm-in">
   <div>
-   <span class="tag rv"><span class="tm"><svg viewBox="22 34 156 142"><use href="#t"/></svg><b><i></i></b></span><strong>Tambora Medical</strong></span>
-   <div class="bar rv"></div>
+   <span class="arm-n mono rv">02 · Medical</span>
+   <span class="tag rv"><span class="tm"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><b><i></i></b></span><strong>Tambora Medical</strong></span>
    <h2 class="rv">Medicine,<br><em>by air.</em></h2>
    <p class="rv">Heavy-load drones that carry medical supplies where roads are slow or don't reach.</p>
    <div class="row rv"><span class="chip pending"><i></i>In development · launching 2029</span></div>
@@ -446,11 +464,11 @@ footer{background:#fff;padding:40px 0 28px;font-size:14px;color:var(--body)}
 </section>
 
 <!-- 9. TAMBORA FF (pending) -->
-<section class="arm paper" id="fire" style="--c:#D9A300">
+<section class="arm fire dark" id="fire" style="--c:var(--s3)">
  <div class="w arm-in">
   <div>
-   <span class="tag rv" style="--c:var(--s3)"><span class="tm"><svg viewBox="22 34 156 142"><use href="#t"/></svg><b><i></i></b></span><strong>Tambora FF</strong><span class="sep">·</span>Firefighting</span>
-   <div class="bar rv" style="background:var(--s3)"></div>
+   <span class="arm-n mono rv">03 · Fire</span>
+   <span class="tag rv"><span class="tm"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><b><i></i></b></span><strong>Tambora FF</strong><span class="sep">·</span>Firefighting</span>
    <h2 class="rv">Ahead of<br><em>the fire.</em></h2>
    <p class="rv">Drones that spot fires early and help crews fight them from above.</p>
    <div class="row rv"><span class="chip pending"><i></i>Planned · launching 2031</span></div>
@@ -469,7 +487,7 @@ footer{background:#fff;padding:40px 0 28px;font-size:14px;color:var(--body)}
 <!-- 10. DIVIDER into demo day -->
 <section class="pn ink short">
  <div class="w pn-in">
-  <span class="tag all rv"><span class="tm"><svg viewBox="22 34 156 142"><use href="#t"/></svg><b><i></i><i></i><i></i><i></i></b></span>Why a demo day</span>
+  <span class="tag all rv"><span class="tm"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><b><i></i><i></i><i></i><i></i></b></span>Why a demo day</span>
   <h2 class="md rv">Don't take our word for it.<br>Talk to the drone.</h2>
   <p class="lead rv">We love building this tech. We decided the best way for the world to understand it is to speak to it yourself.</p>
  </div>
@@ -478,7 +496,7 @@ footer{background:#fff;padding:40px 0 28px;font-size:14px;color:var(--body)}
 <!-- 11. DEMO DAY -->
 <section class="pn paper short" id="demo" style="padding-bottom:40px">
  <div class="w pn-in">
-  <span class="tag rv" style="--c:var(--s4)"><span class="tm"><svg viewBox="22 34 156 142"><use href="#t"/></svg><b><i></i></b></span><i class="live"></i><strong>Demo day</strong><span class="sep">·</span>powered by Sagwic</span>
+  <span class="tag rv" style="--c:var(--s4)"><span class="tm"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><b><i></i></b></span><i class="live"></i><strong>Demo day</strong><span class="sep">·</span>powered by Sagwic</span>
   <h2 class="md rv">Meet the first drone<br>with a personality.</h2>
   <p class="meet-d mono rv">22 April 2027 · Cape Town · Free entry</p>
  </div>
@@ -532,18 +550,6 @@ footer{background:#fff;padding:40px 0 28px;font-size:14px;color:var(--body)}
 </footer>
 
 <!-- dialogs -->
-<dialog class="lm" id="hw" aria-labelledby="hw-t">
- <div class="lm-in">
-  <button class="lm-x" type="button" aria-label="Close">×</button>
-  <span class="lm-k">How it works</span>
-  <h3 id="hw-t">What happens when<br><b>the alarm goes off.</b></h3>
-  <ol class="hiw-steps">
-   <li><span class="hiw-n mono">01</span><h4>Alarm.</h4><p>A security alarm or panic button sends the alert to Tambora.</p></li>
-   <li><span class="hiw-n mono">02</span><h4>Launch.</h4><p>Drone V1 lifts off from its rooftop dock and flies itself there.</p></li>
-   <li><span class="hiw-n mono">03</span><h4>Eyes on it.</h4><p>The guard watches live on their phone. The drone can talk to whoever's on the ground.</p></li>
-  </ol>
- </div>
-</dialog>
 <dialog class="lm" id="lm" aria-labelledby="lm-t">
  <div class="lm-in">
   <button class="lm-x" type="button" aria-label="Close">×</button>

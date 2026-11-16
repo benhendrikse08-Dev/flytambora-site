@@ -116,7 +116,7 @@ header{display:flex;justify-content:space-between;align-items:center;padding:30p
 .chip.pending i{width:8px;height:8px;border-radius:50%;border:2px solid currentColor}
 
 /* demo day */
-.dd{padding:24px 0 96px;background:var(--paper)}
+.dd{padding:96px 0 96px;background:var(--paper)}
 .dd-card{display:grid;grid-template-columns:1.05fr 1fr;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 30px 80px rgba(11,17,24,.10)}
 .dd-card .ph{aspect-ratio:auto;height:100%;min-height:360px;border-radius:0;border:0}
 .dd-body{padding:52px;display:flex;flex-direction:column;justify-content:center}
@@ -176,6 +176,14 @@ header{display:flex;justify-content:space-between;align-items:center;padding:30p
 .br-one h3{font-size:clamp(34px,4.6vw,60px);font-weight:500;letter-spacing:-.035em;line-height:1.02;color:#fff}
 .br-one p{max-width:52ch;color:#B9C1C9;font-size:17px}
 
+.brain .tag{color:#9AA6B2}.brain .tag strong{color:#fff}
+/* brain sum-up line */
+.br-sum{margin:72px auto 0;text-align:center;font-size:clamp(22px,2.4vw,30px);font-weight:500;letter-spacing:-.02em;color:#fff;max-width:none}
+/* launching soon pill next to section tags */
+.soon-p{display:inline-flex;align-items:center;gap:6px;margin-left:4px;padding:3px 10px 3px 8px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:rgba(11,17,24,.07);color:var(--ink)}
+.soon-p::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--s3);box-shadow:0 0 0 0 rgba(242,183,5,.6);animation:pulseY 2.2s infinite}
+@keyframes pulseY{0%{box-shadow:0 0 0 0 rgba(242,183,5,.5)}70%{box-shadow:0 0 0 7px rgba(242,183,5,0)}100%{box-shadow:0 0 0 0 rgba(242,183,5,0)}}
+.ink .soon-p,.brain .soon-p{background:rgba(242,239,233,.1);color:#fff}
 /* ---------- pillars (one section, three cards) ---------- */
 .pil{padding:130px 0;background:var(--paper)}
 .pil .pn-in{gap:20px}
@@ -227,6 +235,7 @@ header{display:flex;justify-content:space-between;align-items:center;padding:30p
  .pil-grid{grid-template-columns:1fr}.card{min-height:340px}
 }
 @media (max-width:560px){
+ .br-sum{margin-top:48px}
  .brain,.pil{padding:84px 0}
  .br-map{grid-template-columns:1fr;margin-top:40px}.br-col{gap:24px}
  .node{width:24px;height:24px;margin:-12px 0 0 -12px;line-height:24px;font-size:11px}
@@ -309,7 +318,7 @@ footer{background:#fff;padding:40px 0 28px;font-size:14px;color:var(--body)}
 <!-- 2. WHY WE EXIST (problem statement, no image) -->
 <section class="pn paper short" id="why">
  <div class="w pn-in">
-  <span class="tag all rv"><span class="tm"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><b><i></i><i></i><i></i><i></i></b></span>Why we exist</span>
+  <span class="tag all rv"><span class="tm"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><b><i></i><i></i><i></i><i></i></b></span>Why we exist<span class="soon-p">Launching soon</span></span>
   <h2 class="rv">Autonomy for<br>essential services.</h2>
   <p class="lead rv">When something goes wrong, help is minutes away. Those minutes matter. Our drones are already in the air.</p>
   <div class="pn-bar rv"><i></i><i></i><i></i><i></i></div>
@@ -320,7 +329,7 @@ footer{background:#fff;padding:40px 0 28px;font-size:14px;color:var(--body)}
 <section class="brain" id="brain">
  <div class="w">
   <div class="br-head">
-   <span class="tag all rv"><span class="tm"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><b><i></i><i></i><i></i><i></i></b></span><strong>Tambora</strong><span class="sep">·</span>TamboraAI</span>
+   <span class="tag all rv"><span class="tm"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><b><i></i><i></i><i></i><i></i></b></span><strong>Tambora</strong><span class="sep">·</span>TamboraAI<span class="soon-p">Launching soon</span></span>
    <h2 class="rv">Every body<br><b>needs a brain.</b></h2>
    <p class="lead rv">Any drone can fly. TamboraAI is what lets ours think. So we're building it the way nature built ours.</p>
   </div>
@@ -345,23 +354,14 @@ footer{background:#fff;padding:40px 0 28px;font-size:14px;color:var(--body)}
     <div class="trait rv"><span class="n"><i>6</i>Learns</span><h3>Gets sharper every flight.</h3><p>What one drone learns today, every drone knows tomorrow.</p></div>
    </div>
   </div>
-  <div class="br-flow rv">
-   <div><b>Sense.</b><span>Cameras, thermal and sound feed the brain in real time.</span></div>
-   <div><b>Think.</b><span>TamboraAI works out what's happening and what to do next.</span></div>
-   <div><b>Act.</b><span>The drone moves, speaks or calls for help. In seconds.</span></div>
-  </div>
-  <div class="br-one">
-   <h3 class="rv">One brain.<br>Every drone.</h3>
-   <p class="rv">Over a city at night, above a highway, deep in the mountains. Every drone flies somewhere different, and every flight makes the same brain smarter.</p>
-   <div class="pn-bar rv"><i></i><i></i><i></i><i></i></div>
-  </div>
+  <p class="br-sum rv">One brain. Every drone. Smarter with every flight.</p>
  </div>
 </section>
 
 <!-- 4. WHAT WE AUTOMATE: the three pillars -->
 <section class="pil" id="pillars">
  <div class="w pn-in">
-  <span class="tag all rv"><span class="tm"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><b><i></i><i></i><i></i><i></i></b></span>Three pillars · AI and the drones that carry it</span>
+  <span class="tag all rv"><span class="tm"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><b><i></i><i></i><i></i><i></i></b></span>Three pillars · AI and the drones that carry it<span class="soon-p">Launching soon</span></span>
   <h2 class="md rv">Automating the<br>public sector.</h2>
   <p class="lead rv">Three essential services. One brain flying all of them, in drones we build ourselves.</p>
   <div class="pil-grid">
@@ -391,21 +391,13 @@ footer{background:#fff;padding:40px 0 28px;font-size:14px;color:var(--body)}
  </div>
 </section>
 
-<!-- 10. DIVIDER into demo day -->
-<section class="pn ink short">
+<!-- 5. DEMO DAY -->
+<section class="pn ink short" id="demo">
  <div class="w pn-in">
-  <span class="tag all rv"><span class="tm"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><b><i></i><i></i><i></i><i></i></b></span>Why a demo day</span>
+  <span class="tag all rv"><span class="tm"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><b><i></i><i></i><i></i><i></i></b></span><i class="live"></i><strong>Demo day</strong><span class="soon-p">Launching soon</span></span>
   <h2 class="md rv">Don't take our word for it.<br>Talk to the drone.</h2>
-  <p class="lead rv">We love building this tech. We decided the best way for the world to understand it is to speak to it yourself.</p>
- </div>
-</section>
-
-<!-- 11. DEMO DAY -->
-<section class="pn paper short" id="demo" style="padding-bottom:40px">
- <div class="w pn-in">
-  <span class="tag all rv"><span class="tm"><svg viewBox="22 34 156 142"><path d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><b><i></i><i></i><i></i><i></i></b></span><i class="live"></i><strong>Demo day</strong><span class="sep">·</span>Cape Town</span>
-  <h2 class="md rv">Meet the first drone<br>with a personality.</h2>
-  <p class="meet-d mono rv">22 April 2027 · Cape Town · Free entry</p>
+  <p class="lead rv">Our drones aren't machinery. They're built to listen, to understand and to feel it when you need help. Come and meet one.</p>
+  <p class="meet-d mono rv" style="color:#8E99A6">22 April 2027 · Cape Town · Free entry</p>
  </div>
 </section>
 <section class="dd">

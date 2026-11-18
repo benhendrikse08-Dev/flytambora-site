@@ -73,6 +73,10 @@ header{display:flex;justify-content:space-between;align-items:center;padding:30p
 .tz picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:64% 50%}
 .tz-head{position:relative;z-index:2}
 .tz header nav{display:flex;gap:28px;font-size:14px;font-weight:500}
+.hd-r{display:flex;align-items:center;gap:20px}
+.join{display:inline-flex;align-items:center;gap:8px;background:var(--s4);color:#fff;text-decoration:none;font-size:14px;font-weight:600;padding:10px 18px;border-radius:999px;white-space:nowrap;box-shadow:0 6px 18px rgba(124,92,255,.35);transition:transform .25s,box-shadow .25s,background .25s}
+.join:hover{background:#6A48F5;transform:translateY(-1px);box-shadow:0 10px 24px rgba(124,92,255,.45)}
+.join:focus-visible{outline:2px solid #fff;outline-offset:3px}
 .tz header nav a{text-decoration:none;padding:6px 10px;border-radius:6px;transition:background .25s}
 .tz header nav a:hover{background:rgba(255,255,255,.45)}
 .tz-title{position:absolute;left:0;right:0;top:12.5vh;text-align:center;padding:0 20px}
@@ -302,7 +306,10 @@ footer{background:#fff;padding:40px 0 28px;font-size:14px;color:var(--body)}
     <span class="top"><svg viewBox="22 34 156 142" aria-hidden="true"><path fill="#0B1118" d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><span class="wm">TAMBORA</span></span>
     <span class="stripe"><i></i><i></i><i></i><i></i></span>
    </a>
-   <nav><a href="#brain">The brain</a><a href="#pillars">What we automate</a><a href="#demo">Demo day</a><a href="#invite">Get updates</a></nav>
+   <div class="hd-r">
+    <nav><a href="#brain">The brain</a><a href="#pillars">What we automate</a><a href="#demo">Demo day</a><a href="#invite">Get updates</a></nav>
+    <a class="join" href="https://sagwic.com" target="_blank" rel="noopener">Join the team <span aria-hidden="true">→</span></a>
+   </div>
   </header>
  </div>
  <div class="tz-title">
@@ -441,7 +448,7 @@ footer{background:#fff;padding:40px 0 28px;font-size:14px;color:var(--body)}
    <div class="ft-cols">
     <div class="ft-col"><h4>Tambora</h4><a href="#why">Why we exist</a><a href="#brain">TamboraAI, the brain</a><a href="#demo">Demo day</a></div>
     <div class="ft-col"><h4>What we automate</h4><a href="#pillars" style="--c:var(--s1)"><i class="dot"></i>Security <span class="soon">2027</span></a><a href="#pillars" style="--c:var(--s2)"><i class="dot"></i>Medical <span class="soon">2027</span></a><a href="#pillars" style="--c:var(--s3)"><i class="dot"></i>Firefighting <span class="soon">2028</span></a></div>
-    <div class="ft-col"><h4>Get in touch</h4><a href="#invite">Keep me posted</a><a href="mailto:hello@flytambora.com">hello@flytambora.com</a><a href="privacy.html">Privacy</a></div>
+    <div class="ft-col"><h4>Get in touch</h4><a href="#invite">Keep me posted</a><a href="https://sagwic.com" target="_blank" rel="noopener">Join the team</a><a href="mailto:hello@flytambora.com">hello@flytambora.com</a><a href="privacy.html">Privacy</a></div>
    </div>
   </div>
   <div class="ft-bot"><span>© 2026 Tambora Technologies (Pty) Ltd · South Africa</span><span>flytambora.com</span></div>

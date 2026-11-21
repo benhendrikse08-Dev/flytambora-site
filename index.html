@@ -418,8 +418,19 @@ body.bx-on .site-dim{transform:scale(.94);filter:blur(6px) brightness(.45);opaci
 @media(max-width:760px){.tz-scroll{display:none}}
 .tz-sub b{color:#fff;font-weight:600}
 html{scroll-padding-top:24px}
+/* fire card: burning ridge */
+.card.fire{background:#120D09;background-image:radial-gradient(ellipse 100% 70% at 60% 120%,rgba(255,110,10,.5),transparent 70%)}
+.card.fire .ridge{position:absolute;left:0;right:0;top:44px;width:100%;height:120px;z-index:0;pointer-events:none;overflow:visible}
+.ridge .mtn{fill:url(#mt)}
+.ridge .fline{fill:none;stroke:url(#fl);stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 5px #FF8A00) drop-shadow(0 0 12px rgba(255,90,20,.9));animation:flick 1.3s ease-in-out infinite}
+@keyframes flick{0%,100%{opacity:1}35%{opacity:.7}60%{opacity:.95}80%{opacity:.75}}
+.flame-glow{position:absolute;left:18%;right:18%;top:70px;height:90px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,130,20,.55),transparent);filter:blur(12px);animation:flick 1.7s ease-in-out infinite;pointer-events:none;z-index:0}
+.smoke{position:absolute;left:40%;top:60px;width:80px;height:80px;border-radius:50%;background:radial-gradient(closest-side,rgba(200,190,180,.22),transparent);filter:blur(6px);opacity:0;animation:smoke 6s ease-out infinite;pointer-events:none;z-index:0}
+@keyframes smoke{0%{transform:translate(0,0) scale(.6);opacity:0}20%{opacity:1}100%{transform:translate(30px,-90px) scale(1.9);opacity:0}}
+.card.fire .k,.card.fire .lm-solid,.card.fire .sum{position:relative;z-index:1}
+@media (prefers-reduced-motion:reduce){.ridge .fline,.flame-glow,.smoke{animation:none}}
 </style><script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"Tambora Technologies","alternateName":"Tambora","url":"https://flytambora.com/","logo":"https://flytambora.com/favicon.svg","description":"Tambora Technologies builds autonomous drones and AI for essential services in South Africa: security, medical and firefighting.","address":{"@type":"PostalAddress","addressCountry":"ZA"},
+{"@context":"https://schema.org","@type":"Organization","name":"Tambora Technologies","alternateName":"Tambora","url":"https://flytambora.com/","logo":"https://flytambora.com/favicon.svg","description":"Tambora Technologies builds autonomous drones and AI for essential services in South Africa: medical, security and firefighting.","address":{"@type":"PostalAddress","addressCountry":"ZA"},
 "subOrganization":[{"@type":"Organization","name":"Tambora Medical","url":"https://medical.flytambora.com/"},{"@type":"Organization","name":"Tambora Firefighting","url":"https://fire.flytambora.com/"},{"@type":"Organization","name":"Sagwic","url":"https://sagwic.com/","description":"Tambora's talent scout for engineers and builders."}],
 "sameAs":["https://medical.flytambora.com/","https://fire.flytambora.com/","https://sagwic.com/"]}
 </script>
@@ -447,7 +458,7 @@ html{scroll-padding-top:24px}
   </header>
  </div>
  <div class="tz-title">
-  <span class="tz-k"><i></i>Security · Medical · Firefighting</span>
+  <span class="tz-k"><i></i>Medical · Security · Firefighting</span>
   <h1>Help from<br>above.</h1>
   <div class="tz-sub"><b>Tambora Technologies</b> builds autonomous drones that get to emergencies first, so help arrives sooner.</div>
  </div>
@@ -484,21 +495,28 @@ html{scroll-padding-top:24px}
   <h2 class="md rv">Automating the<br>public sector.</h2>
   <p class="lead rv">Our mission is to automate essential services for a safer, better-run society, starting with the three that can never afford to be late.</p>
   <div class="pil-grid">
-   <article class="card sec rv">
-    <div class="radar" aria-hidden="true"><i></i></div>
-    <span class="k">01 · Security</span>
-    <a class="lm-solid" href="#pillars">Learn more about security <span aria-hidden="true">→</span></a>
-    <p class="sum">Autonomous drones that respond to alarms, catch crime as it happens and give guards eyes on the scene first.</p>
-   </article>
    <article class="card med rv">
     <i class="cross" aria-hidden="true"></i>
     <svg class="ecg" viewBox="0 0 400 110" preserveAspectRatio="none" aria-hidden="true"><path class="bg" d="M0 70H120L135 70L150 30L168 104L186 10L204 82L218 70H400"/><path d="M0 70H120L135 70L150 30L168 104L186 10L204 82L218 70H400"/></svg>
-    <span class="k">02 · Medical</span>
+    <span class="k">01 · Medical</span>
     <a class="lm-solid" href="https://medical.flytambora.com">Learn more about medical <span aria-hidden="true">→</span></a>
     <p class="sum">Autonomous drones that spot medical emergencies and alert the right help within seconds.</p>
    </article>
+   <article class="card sec rv">
+    <div class="radar" aria-hidden="true"><i></i></div>
+    <span class="k">02 · Security</span>
+    <a class="lm-solid" href="#pillars">Learn more about security <span aria-hidden="true">→</span></a>
+    <p class="sum">Autonomous drones that respond to alarms, catch crime as it happens and give guards eyes on the scene first.</p>
+   </article>
    <article class="card fire rv">
-    <span class="ember" style="left:18%;--x:30px"></span><span class="ember" style="left:42%;--x:-24px;animation-delay:1.3s"></span><span class="ember" style="left:66%;--x:18px;animation-delay:2.4s"></span><span class="ember" style="left:84%;--x:-30px;animation-delay:3.6s"></span><span class="ember" style="left:30%;--x:-12px;animation-delay:4.2s"></span>
+    <span class="ember" style="left:30%;--x:-14px;animation-delay:0.6s"></span><span class="ember" style="left:52%;--x:22px;animation-delay:1.9s"></span><span class="ember" style="left:74%;--x:-20px;animation-delay:3.1s"></span><span class="ember" style="left:10%;--x:16px;animation-delay:3.8s"></span><span class="ember" style="left:60%;--x:-8px;animation-delay:4.4s"></span><span class="ember" style="left:18%;--x:30px"></span><span class="ember" style="left:42%;--x:-24px;animation-delay:1.3s"></span><span class="ember" style="left:66%;--x:18px;animation-delay:2.4s"></span><span class="ember" style="left:84%;--x:-30px;animation-delay:3.6s"></span><span class="ember" style="left:30%;--x:-12px;animation-delay:4.2s"></span>
+    <span class="flame-glow" aria-hidden="true"></span>
+    <svg class="ridge" viewBox="0 0 400 160" preserveAspectRatio="none" aria-hidden="true">
+     <defs><linearGradient id="mt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A2414"/><stop offset=".45" stop-color="#1E140C"/><stop offset="1" stop-color="#120D09"/></linearGradient><linearGradient id="fl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FF4D1A" stop-opacity="0"/><stop offset=".25" stop-color="#FF7A00"/><stop offset=".55" stop-color="#FFC21A"/><stop offset=".8" stop-color="#FF5A1F"/><stop offset="1" stop-color="#FF4D1A" stop-opacity="0"/></linearGradient></defs>
+     <path class="mtn" d="M0 160V118L46 92L78 104L122 62L160 86L196 48L236 80L270 66L312 98L350 84L400 106V160Z"/>
+     <path class="fline" d="M100 76L122 62L160 86L196 48L236 80L262 70"/>
+    </svg>
+    <span class="smoke" aria-hidden="true"></span><span class="smoke" style="left:58%;animation-delay:2.2s" aria-hidden="true"></span>
     <span class="k">03 · Firefighting</span>
     <a class="lm-solid" href="https://fire.flytambora.com">Learn more about firefighting <span aria-hidden="true">→</span></a>
     <p class="sum">Autonomous drones that spot smoke early, alert firefighters and help with mountain rescues.</p>
@@ -549,11 +567,11 @@ html{scroll-padding-top:24px}
      <span class="top"><svg viewBox="22 34 156 142" aria-hidden="true"><path fill="#0B1118" d="M22 34H93V176H67V62H22Z M107 34H178V62H133V176H107Z"/></svg><span class="wm">TAMBORA</span></span>
      <span class="stripe"><i></i><i></i><i></i><i></i></span>
     </a>
-    <p>Autonomous drones for essential services. Security, then medical, then fire.</p>
+    <p>Autonomous drones for essential services: medical, security and firefighting.</p>
    </div>
    <div class="ft-cols">
     <div class="ft-col"><h4>Tambora</h4><a href="#why">Why we exist</a><a href="#brain">TamboraAI, the brain</a><a href="#join">Demo days 2027</a></div>
-    <div class="ft-col"><h4>What we automate</h4><a href="#pillars" style="--c:var(--s1)"><i class="dot"></i>Security <span class="soon">2027</span></a><a href="#pillars" style="--c:var(--s2)"><i class="dot"></i>Medical <span class="soon">2027</span></a><a href="#pillars" style="--c:var(--s3)"><i class="dot"></i>Firefighting <span class="soon">2028</span></a></div>
+    <div class="ft-col"><h4>What we automate</h4><a href="https://medical.flytambora.com" style="--c:var(--s2)"><i class="dot"></i>Medical <span class="soon">2027</span></a><a href="#pillars" style="--c:var(--s1)"><i class="dot"></i>Security <span class="soon">2027</span></a><a href="https://fire.flytambora.com" style="--c:var(--s3)"><i class="dot"></i>Firefighting <span class="soon">2028</span></a></div>
     <div class="ft-col"><h4>Get in touch</h4><a href="#join">Keep me posted</a><a href="https://sagwic.com" target="_blank" rel="noopener">Join the team</a><a href="mailto:hello@flytambora.com">hello@flytambora.com</a><a href="privacy.html">Privacy</a></div>
    </div>
   </div>
@@ -611,7 +629,7 @@ html{scroll-padding-top:24px}
   <div class="bxb two">
    <div>
     <span class="bxa-k">One brain, every service</span>
-    <p>We're building TamboraAI as one brain for every service we run. Security, medical and firefighting each ask different questions of the ground below: is someone where they shouldn't be, has a car stopped in a live lane, is that haze or smoke? Underneath, the skills are the same: see clearly, understand the scene and act quickly.</p>
+    <p>We're building TamboraAI as one brain for every service we run. Medical, security and firefighting each ask different questions of the ground below: is someone where they shouldn't be, has a car stopped in a live lane, is that haze or smoke? Underneath, the skills are the same: see clearly, understand the scene and act quickly.</p>
     <p>That's why one platform makes sense. What the brain learns watching a highway at night can sharpen how it reads a building site at night, and every new service makes the whole network more capable.</p>
    </div>
    <div>
